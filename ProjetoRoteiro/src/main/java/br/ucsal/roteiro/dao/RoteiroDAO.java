@@ -13,7 +13,7 @@ public class RoteiroDAO {
 	
 	private static Connection con = Conexao.getConnection();
 	@SuppressWarnings("unused")//so pra tirar o warning
-	private static List<Roteiro> buscarRoteiro() {
+	public static List<Roteiro> listarRoteiros() {
 		
 		List<Roteiro> roteiros = new ArrayList<Roteiro>();
 		
@@ -24,7 +24,7 @@ public class RoteiroDAO {
 			
 			while(rs.next()) {
 				
-				Integer id = Integer.parseInt(rs.getString("id"));
+				Integer id = rs.getInt("id");
 				String codigo = rs.getString("codigo");
 				String descricao = rs.getString("descricao");
 				String tipo = rs.getString("tipo");
@@ -41,13 +41,27 @@ public class RoteiroDAO {
 		return roteiros;
 	}
 	
+	public static void obterRoteiro(Integer idRoteiro) {
+		try {
+			String sql = "select * from roteiros where id=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idRoteiro);
+			ResultSet rs = ps.executeQuery();
+			ps.close();
+			rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void inserirRoteiro(Roteiro r) {
 		try {
 			String sql = "insert into roteiros values(?,?,?,?);";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			Integer i = r.getId();
-			ps.setInt(1, i);
+			Integer id = r.getId();
+			ps.setInt(1, id);
 			ps.setString(2, r.getCodigo());
 			ps.setString(3, r.getDescricao());
 			ps.setString(4, r.getTipo());
@@ -75,12 +89,13 @@ public class RoteiroDAO {
 	
 	public static void editarRoteiro(Roteiro r) {
 		try {
-			String sql = "update roteiros set codigo=?, descricao=?, tipo=?";
+			String sql = "update roteiros set id=?, codigo=?, descricao=?, tipo=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setString(1, r.getCodigo());
-			ps.setString(2, r.getDescricao());
-			ps.setString(3, r.getTipo());
+			ps.setInt(1, r.getId());
+			ps.setString(2, r.getCodigo());
+			ps.setString(3, r.getDescricao());
+			ps.setString(4, r.getTipo());
 			ps.executeUpdate();
 			
 			ps.close();
