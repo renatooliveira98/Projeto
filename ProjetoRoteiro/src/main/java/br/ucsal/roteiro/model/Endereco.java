@@ -23,6 +23,14 @@ public class Endereco {
 		this.numero = numero;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
 	public Integer getId() {
 		return id;
 	}

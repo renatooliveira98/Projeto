@@ -68,7 +68,7 @@ situacao varchar(45) not null
 create table pontos(
 id  INTEGER IDENTITY PRIMARY KEY,
 descricao varchar(45) not null,
-x FLOAT ,
+x FLOAT,
 y FLOAT 
 );
 

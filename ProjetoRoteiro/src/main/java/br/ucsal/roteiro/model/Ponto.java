@@ -4,14 +4,14 @@ public class Ponto {
 
 	private Integer id;
 	private String descricao;
-	private long x;
-	private long y;
+	private float x;
+	private float y;
 	
 	public Ponto() {
 		super();
 	}
 	
-	public Ponto(Integer id, String descricao, long x, long y) {
+	public Ponto(Integer id, String descricao, float x, float y) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -31,13 +31,13 @@ public class Ponto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public long getX() {
+	public float getX() {
 		return x;
 	}
 	public void setX(long x) {
 		this.x = x;
 	}
-	public long getY() {
+	public float getY() {
 		return y;
 	}
 	public void setY(long y) {
