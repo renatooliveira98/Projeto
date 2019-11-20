@@ -5,8 +5,6 @@ public class Usuario {
 	private Integer id;
 	private String nome;
 	private String nomeSocial;
-
-	private String login;
 	private String email;
 	private String cpf;
 	private String senha;
@@ -18,13 +16,12 @@ public class Usuario {
 	}
 
 
-	public Usuario(Integer id, String nome, String nomeSocial, String login, String email, String cpf, String senha,
+	public Usuario(Integer id, String nome, String nomeSocial, String email, String cpf, String senha,
 			Endereco endereco, Papel papel) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.nomeSocial = nomeSocial;
-		this.login = login;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
@@ -53,15 +50,6 @@ public class Usuario {
 
 	public void setNomeSocial(String nomeSocial) {
 		this.nomeSocial = nomeSocial;
-	}
-
-	
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getEmail() {
