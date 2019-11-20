@@ -1,4 +1,4 @@
-# Projeto
+# ProjetoRoteiro
 
 Para executar:
 Run as... -> Maven Build...
@@ -43,11 +43,11 @@ Os ônibus serão cadastrados e suas informações poderão ser editadas.
 </br>
 n
 <h2>Diagrama de dominio:</h2><br>
-<img src="src/main/resources/imagens/diagramaclasses.png">
+<img src="ProjetoRoteiro/src/main/resources/imagens/diagramaclasses.png">
 
 <h2>Diagrama de entidades:</h2><br>
-<img src="src/main/resources/imagens/diagramarelacionamento.png">
+<img src="ProjetoRoteiro/src/main/resources/imagens/diagramarelacionamento.png">
 </br>
 </br>
 </br>
-<img src="src/main/resources/imagens/diagramaentidade.png">
+<img src="ProjetoRoteiro/src/main/resources/imagens/diagramaentidade.png">
