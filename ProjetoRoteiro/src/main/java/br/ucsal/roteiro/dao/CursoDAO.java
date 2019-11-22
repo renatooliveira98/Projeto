@@ -12,7 +12,7 @@ import br.ucsal.roteiro.model.Onibus;
 import br.ucsal.roteiro.util.Conexao;
 
 public class CursoDAO {
-
+	private static Connection con = Conexao.getConnection();
 	public static List<Curso> listarCursos(){
 		List <Curso> cursos = new ArrayList<Curso>();
 		Connection c = Conexao.getConnection();
@@ -61,5 +61,32 @@ public class CursoDAO {
 		}
 		
 		return curso;
+	}
+	
+	
+	//COLOQUEI ESSA FUNÇÃO PQ PRECISAVA PRA PARTE DE INSTITUIÇÃO
+	public static List<Curso> buscarCursoDaInstituicao(Integer idInstituicao) {
+		List<Curso> cursos = new ArrayList<Curso>();
+		
+		try {
+			String sql = "select * from cursos where id_instituicao=?;";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, idInstituicao);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Integer id=rs.getInt("id");
+				String nome = rs.getString("nome");
+				Integer duracao = rs.getInt("duracao");
+				Integer idInst = rs.getInt("id_instituicao");
+				Instituicao i = InstituicaoDAO.buscarInstituicao(idInst);
+				Curso curso = new Curso(id, i, nome, duracao);
+				cursos.add(curso);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return cursos;
 	}
 }

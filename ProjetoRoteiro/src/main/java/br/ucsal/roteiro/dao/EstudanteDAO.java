@@ -7,15 +7,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Estudante;
+import br.ucsal.roteiro.model.Usuario;
 import br.ucsal.roteiro.util.Conexao;
 
 public class EstudanteDAO {
 	private static Connection con = Conexao.getConnection();
-	
+
 	public static List<Estudante> listarEstudantes() {
 		List<Estudante> estudantes = new ArrayList<>();
-		
+
 		try {
 			String sql = "select * from estudantes;";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -24,38 +26,76 @@ public class EstudanteDAO {
 				Integer id= rs.getInt("id");
 				Integer idCurso= rs.getInt("id_curso");
 				Integer idUsuario=rs.getInt("id_usuario");
-				
-				
-				//Estudante estudante = new Estudante(idUsuario, usuario, roteiros, curso);
-				
+				Curso c= CursoDAO.buscarCurso(idCurso);
+				Usuario u = UsuarioDAO.buscarUsuario(idUsuario);		
+				Estudante estudante = new Estudante(id, u, null, c);
+				estudantes.add(estudante);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 		return estudantes;
 	}
-	
+
 	public static Estudante buscarEstudante(Integer id) {
 		Estudante estudante=null;
-		
+
 		try {
 			String sql = "select * from estudantes where id=?;";
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs=pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				Integer idEstudante= rs.getInt("id");
 				Integer idCurso= rs.getInt("id_curso");
 				Integer idUsuario=rs.getInt("id_usuario");
-				
-				//estudante= new Estudante(idEstudante, usuario, roteiros, curso)
+				Curso c= CursoDAO.buscarCurso(idCurso);
+				Usuario u = UsuarioDAO.buscarUsuario(idUsuario);		
+				estudante = new Estudante(idEstudante, u, null, c);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+		}	
+		return estudante;		
+	}
+
+	public static void inserirEstudante(Estudante estudante) {
+		String sql = "insert into roteiro_estudante ( id_curso, id_usuario)  values(?,?);";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, estudante.getCurso().getId());
+			pstmt.setInt(2, estudante.getUsuario().getId()); 
+			pstmt.execute();
+			pstmt.close(); 
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		return estudante;
-		
+	}
+
+	public static void EditarEstudante(Estudante estudante) {
+		String sql ="update usuarios set id_curso=?, id_usuario=? where id=?";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, estudante.getCurso().getId());
+			pstmt.setInt(2, estudante.getUsuario().getId());
+			pstmt.setInt(3, estudante.getId());
+			pstmt.executeUpdate();
+			pstmt.close(); 
+		} catch (Exception e) {
+			e.printStackTrace();	
+		}
+	}
+
+	public static void DeletarEstudante(Integer id) {
+		String sql="delete from usuarios where id=?";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			pstmt.close(); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
