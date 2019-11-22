@@ -48,7 +48,6 @@ public class UsuarioDAO {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs=pstmt.executeQuery();
-			
 			if(rs.next()){
 				Integer idUser= rs.getInt("id");
 				String nome= rs.getString("nome");
