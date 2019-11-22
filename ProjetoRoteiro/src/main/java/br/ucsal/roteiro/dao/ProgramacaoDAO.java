@@ -38,7 +38,7 @@ public class ProgramacaoDAO {
 				LocalTime horaVolta = LocalTime.parse(horaVoltaAux);
 				Onibus onibus = OnibusDAO.buscarOnibus(Integer.parseInt(rs.getString(5)));
 				Motorista motorista = MotoristaDAO.buscarMotorista(Integer.parseInt(rs.getString(6)));
-				Roteiro roteiro = ROteiroDAO.buscarRoteiro(Integer.parseInt(rs.getString(7)));
+				Roteiro roteiro = RoteiroDAO.obterRoteiro(Integer.parseInt(rs.getString(7)));
 				
 				Programacao programacao = new Programacao();
 				programacao.setDia(dia);

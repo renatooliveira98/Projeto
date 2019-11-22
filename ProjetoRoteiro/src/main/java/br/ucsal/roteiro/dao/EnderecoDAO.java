@@ -4,15 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.util.Conexao;
 
 public class EnderecoDAO {
 
 	private static Connection con = Conexao.getConnection();
 	
-	@SuppressWarnings("unused")
-	private static void obterPonto(Integer idEndereco) {
-		
+	
+	public static Endereco obterPonto(Integer idEndereco) {
+		Endereco endereco = new Endereco();
 		try {
 			String sql = "select * from enderecos where id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -24,5 +25,7 @@ public class EnderecoDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		return endereco;
 	}
 }

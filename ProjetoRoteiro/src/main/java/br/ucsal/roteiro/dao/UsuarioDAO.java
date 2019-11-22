@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ucsal.roteiro.model.Endereco;
+
 import br.ucsal.roteiro.model.Papel;
 import br.ucsal.roteiro.model.Usuario;
 import br.ucsal.roteiro.util.Conexao;
 
 public class UsuarioDAO {
 	private static Connection con = Conexao.getConnection();
-	
+
 	public static Usuario autenticarUsuario(Usuario user) {
 		boolean autenticado = false;
 		try {
@@ -22,7 +24,7 @@ public class UsuarioDAO {
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getSenha());
 			ResultSet rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
 				autenticado = true;
 				user.setId(Integer.parseInt(rs.getString(1)));
@@ -30,65 +32,117 @@ public class UsuarioDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		if(autenticado /*== true*/) {
 			return user;
 		}else {
 			return null;
 		}
 	}
-	
+
 	public static List<Usuario> listarUsuarios() {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
 			String sql = "select * from usuarios;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				Integer id= rs.getInt("id");
 				String nome= rs.getString("nome");
 				String nomeSocial = rs.getString("nome_social");
 				String email = rs.getString("email");
 				String cpf = rs.getString("cpf");
+				String senha = rs.getString("senha");
 				Integer idEndereco = rs.getInt("id_endereco");
 				Integer idPapel = rs.getInt("id_papel");
 				Papel p = PapelDAO.buscarPapel(idPapel);
-				//Usuario usuario = new Usuario(idPapel, nome, nomeSocial, login, email, cpf, senha, endereco, papel);
-				
+				Endereco e =EnderecoDAO.obterPonto(idEndereco);
+				Usuario usuario = new Usuario(id, nome, nomeSocial, email, cpf, senha, e, p);
+				usuarios.add(usuario);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return usuarios;
 	}
-	
-	
+
+
 	public static Usuario buscarUsuario(Integer id) {
 		Usuario usuario = null;	
-		
+
 		try {
 			String sql = "select * from usuarios where id=?;";
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs=pstmt.executeQuery();
-			
 			if(rs.next()){
 				Integer idUser= rs.getInt("id");
 				String nome= rs.getString("nome");
 				String nomeSocial = rs.getString("nome_social");
 				String email = rs.getString("email");
 				String cpf = rs.getString("cpf");
+				String senha =rs.getString("senha");
 				Integer idEndereco = rs.getInt("id_endereco");
 				Integer idPapel = rs.getInt("id_papel");
 				Papel p = PapelDAO.buscarPapel(idPapel);
-				//usuario = new Usuario(id, nome, nomeSocial, login, email, cpf, senha, endereco, papel)
+				Endereco e = EnderecoDAO.obterPonto(idEndereco);
+				usuario = new Usuario(idUser, nome, nomeSocial, email, cpf, senha, e, p);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+
 		return usuario;
-		
+
+	}
+
+	public static void inserirUsuario(Usuario usuario) {
+		try {
+			String sql="insert into usuarios (nome, nome_social, email, cpf, senha, id_endereco, id_papel) values(?,?,?,?,?,?,?);";
+			 PreparedStatement pstmt= con.prepareStatement(sql);
+			 pstmt.setString(1, usuario.getNome());
+			 pstmt.setString(2, usuario.getNomeSocial());
+			 pstmt.setString(3, usuario.getEmail());
+			 pstmt.setString(4, usuario.getCpf());
+			 pstmt.setString(5, usuario.getSenha());
+			 pstmt.setInt(6, usuario.getEndereco().getId());
+			 pstmt.setInt(7, usuario.getPapel().getId());
+			 pstmt.execute();
+			 pstmt.close();
+		} catch (SQLException e ) {
+			 e.printStackTrace(); 
+		}
+	}
+
+	public static void EditarUsuario(Usuario usuario) {
+		String sql="update usuarios set nome=?, nome_social=?, email=?, cpf=?, senha=?, id_endereco=?, id_papel=? where id=?;";
+		try {
+			 PreparedStatement pstmt= con.prepareStatement(sql);
+			 pstmt.setString(1, usuario.getNome());
+			 pstmt.setString(2, usuario.getNomeSocial());
+			 pstmt.setString(3, usuario.getEmail());
+			 pstmt.setString(4, usuario.getCpf());
+			 pstmt.setString(5, usuario.getSenha());
+			 pstmt.setInt(6, usuario.getEndereco().getId());
+			 pstmt.setInt(7, usuario.getPapel().getId());
+			 pstmt.setInt(8, usuario.getId());
+			 pstmt.executeUpdate();
+			 pstmt.close(); 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void DeletarUsuario(Integer id) {
+		String sql = "delete from usuarios where id=?";
+		try {
+			 PreparedStatement pstmt= con.prepareStatement(sql);
+			 pstmt.setInt(1, id);
+			 pstmt.executeUpdate();
+			 pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
