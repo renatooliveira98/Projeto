@@ -10,10 +10,10 @@ import br.ucsal.roteiro.model.Ponto;
 import br.ucsal.roteiro.util.Conexao;
 
 public class PontoDAO {
+	private static Connection con = Conexao.getConnection();
 	
-	public static List<Ponto> buscarPontos() {
+	public static List<Ponto> listarPontos() {
 		
-		Connection con = Conexao.getConnection();
 		List<Ponto> pontos = new ArrayList<Ponto>();
 		
 		try {
@@ -23,10 +23,10 @@ public class PontoDAO {
 			
 			while(rs.next()) {
 				
-				Integer id = Integer.parseInt(rs.getString("id"));
+				Integer id = rs.getInt("id");
 				String descricao = rs.getString("descricao");
-				Long x = Long.parseLong(rs.getString("x"));
-				Long y = Long.parseLong(rs.getString("y"));
+				Float x = Float.parseFloat(rs.getString("x"));
+				Float y = Float.parseFloat(rs.getString("y"));
 				
 				Ponto ponto = new Ponto(id, descricao, x, y);
 				pontos.add(ponto);
@@ -39,5 +39,64 @@ public class PontoDAO {
 		}
 		
 		return pontos;
+	}
+	
+	public static void obterPonto(Integer idPonto) {
+		try {
+			String sql = "select * from pontos where id=?"; 
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idPonto);
+			ResultSet rs = ps.executeQuery();
+			ps.close();
+			rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	} 
+	
+	public static void inserirPonto(Ponto r) {
+		try {
+			String sql = "insert into pontos values(?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			Integer id = r.getId();
+			ps.setInt(1, id);
+			ps.setString(2, r.getDescricao());
+			ps.setFloat(3, r.getX());
+			ps.setFloat(4, r.getY());
+			ResultSet rs = ps.executeQuery();
+			ps.close();
+			rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void excluirPonto(Integer idPonto) {
+		try {
+			String sql = "delete from pontos where id=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idPonto);
+			ps.executeQuery();
+			ps.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void editarPonto(Ponto p) {
+		try {
+			String sql = "upadet pontos set id=?, descricao=?, x=?, y=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, p.getId());
+			ps.setString(2, p.getDescricao());
+			ps.setFloat(3, p.getX());
+			ps.setFloat(4, p.getY());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

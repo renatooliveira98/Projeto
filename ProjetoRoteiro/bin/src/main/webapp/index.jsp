@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6 ColLogin">
-				<form method="post" action="./LoginServlet">
+				<form method="post" action="./inicio.html">
 				<div class="row centered">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10">
