@@ -14,6 +14,30 @@ import br.ucsal.roteiro.util.Conexao;
 public class UsuarioDAO {
 	private static Connection con = Conexao.getConnection();
 	
+	public static Usuario autenticarUsuario(Usuario user) {
+		boolean autenticado = false;
+		try {
+			String sql = "select * from usuarios where email=? and senha=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getSenha());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				autenticado = true;
+				user.setId(Integer.parseInt(rs.getString(1)));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(autenticado /*== true*/) {
+			return user;
+		}else {
+			return null;
+		}
+	}
+	
 	public static List<Usuario> listarUsuarios() {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
