@@ -3,6 +3,7 @@ package br.ucsal.roteiro.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,34 +14,37 @@ import br.ucsal.roteiro.util.Conexao;
 
 public class CursoDAO {
 	private static Connection con = Conexao.getConnection();
-	public static List<Curso> listarCursos(){
-		List <Curso> cursos = new ArrayList<Curso>();
+
+	public static List<Curso> listarCursos() {
+		List<Curso> cursos = new ArrayList<Curso>();
 		Connection c = Conexao.getConnection();
 		try {
-			String sql = "SELECT * from cursos ;"; 
+			String sql = "SELECT * from cursos ;";
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				int id = Integer.parseInt(rs.getString(1));
 				String nome = rs.getString(2);
 				int duracao = Integer.parseInt(rs.getString(3));
-				Instituicao instituicao = InstituicaoDAO.buscarBloco(Integer.parseInt(rs.getString(4)));
+				Instituicao instituicao = InstituicaoDAO.buscarInstituicao(Integer.parseInt(rs.getString(4)));
 				Curso curso = new Curso();
 				curso.setDuracao(duracao);
 				curso.setId(id);
 				curso.setNome(nome);
 				curso.setInstituicao(instituicao);
 				cursos.add(curso);
-				
+
 			}
-		}catch (Exception e) {
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return cursos;
 	}
-	
+
 	public static Curso buscarCurso(int idCurso) {
 		Connection c = Conexao.getConnection();
 		Curso curso = null;
@@ -49,33 +53,34 @@ public class CursoDAO {
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setInt(1, idCurso);
 			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				int id = Integer.parseInt(rs.getString(1));
 				String nome = rs.getString(2);
 				int duracao = Integer.parseInt(rs.getString(3));
 				Instituicao instituicao = InstituicaoDAO.buscarInstituicao(Integer.parseInt(rs.getString(4)));
 				curso = new Curso(id, instituicao, nome, duracao);
 			}
-		}catch (Exception e) {
-			
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+
 		}
-		
+
 		return curso;
 	}
-	
-	
-	//COLOQUEI ESSA FUNÇÃO PQ PRECISAVA PRA PARTE DE INSTITUIÇÃO
+
+	// COLOQUEI ESSA FUNÇÃO PQ PRECISAVA PRA PARTE DE INSTITUIÇÃO
 	public static List<Curso> buscarCursoDaInstituicao(Integer idInstituicao) {
 		List<Curso> cursos = new ArrayList<Curso>();
-		
+
 		try {
 			String sql = "select * from cursos where id_instituicao=?;";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idInstituicao);
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Integer id=rs.getInt("id");
+
+			while (rs.next()) {
+				Integer id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				Integer duracao = rs.getInt("duracao");
 				Integer idInst = rs.getInt("id_instituicao");
@@ -83,10 +88,57 @@ public class CursoDAO {
 				Curso curso = new Curso(id, i, nome, duracao);
 				cursos.add(curso);
 			}
+			rs.close();
+			pstmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return cursos;
+	}
+
+	public static void inserirCurso(Curso curso) {
+		try {
+			String sql = "insert into cursos (nome, duracao, id_instituicao) values (?, ?, ?);";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, curso.getNome());
+			pstmt.setInt(2, curso.getDuracao());
+			pstmt.setInt(3, curso.getInstituicao().getId());
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void editarCurso(Curso curso) {
+		try {
+			String sql = "UPDATE cursos " + "set nome=?, duracao = ?, id_instituicao = ? " + "where curso_id = ?;";
+
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, curso.getNome());
+			pstmt.setInt(2, curso.getDuracao());
+			pstmt.setInt(3, curso.getInstituicao().getId());
+			pstmt.setInt(4, curso.getId());
+			pstmt.executeUpdate();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void removerCurso(Curso curso) {
+		try {
+			String sql = "DELETE FROM cursos where curso_id=?;";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, curso.getId());
+			pstmt.executeUpdate();
+			pstmt.close();
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
