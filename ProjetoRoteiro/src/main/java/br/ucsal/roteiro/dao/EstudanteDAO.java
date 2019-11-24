@@ -8,13 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.ucsal.roteiro.model.Curso;
+import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Estudante;
+import br.ucsal.roteiro.model.Papel;
 import br.ucsal.roteiro.model.Usuario;
 import br.ucsal.roteiro.util.Conexao;
 
 public class EstudanteDAO {
 	private static Connection con = Conexao.getConnection();
 
+	
 	public static List<Estudante> listarEstudantes() {
 		List<Estudante> estudantes = new ArrayList<>();
 
@@ -37,6 +40,32 @@ public class EstudanteDAO {
 		return estudantes;
 	}
 
+	public static List<Usuario> buscarEstudantes() {
+		List<Usuario> estudantes = new ArrayList<Usuario>();
+		Usuario usuario;
+		String sql = "select * from usuarios where id_papel=1;";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				Integer idUser= rs.getInt("id");
+				String nome= rs.getString("nome");
+				String nomeSocial = rs.getString("nome_social");
+				String email = rs.getString("email");
+				String cpf = rs.getString("cpf");
+				String senha =rs.getString("senha");
+				Integer idEndereco = rs.getInt("id_endereco");
+				Integer idPapel = rs.getInt("id_papel");
+				Papel p = PapelDAO.buscarPapel(idPapel);
+				Endereco e = EnderecoDAO.obterPonto(idEndereco);
+				usuario = new Usuario(idUser, nome, nomeSocial, email, cpf, senha, e, p);
+				estudantes.add(usuario);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return estudantes;
+	}
 	public static Estudante buscarEstudante(Integer id) {
 		Estudante estudante=null;
 

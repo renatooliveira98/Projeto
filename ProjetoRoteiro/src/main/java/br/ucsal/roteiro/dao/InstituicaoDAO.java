@@ -50,8 +50,8 @@ public class InstituicaoDAO {
 				Integer idInstituicao= rs.getInt("id");
 				String nome = rs.getString("nome");
 				Integer idEndereco = rs.getInt("id_endereco");	
-				Endereco e= EnderecoDAO.obterPonto(idEndereco);
-				instituicao = new Instituicao(idEndereco, nome, e, CursoDAO.buscarCursoDaInstituicao(idInstituicao));
+				Endereco e= EnderecoDAO.buscarEndereco(idEndereco);
+				instituicao = new Instituicao(idInstituicao, nome, e, CursoDAO.buscarCursoDaInstituicao(idInstituicao));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
