@@ -41,18 +41,27 @@ public class RoteiroDAO {
 		return roteiros;
 	}
 	
-	public static void obterRoteiro(Integer idRoteiro) {
+	public static Roteiro obterRoteiro(Integer idRoteiro) {
+		Roteiro roteiro = null;
 		try {
 			String sql = "select * from roteiros where id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, idRoteiro);
 			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				int id = Integer.parseInt(rs.getString(1));
+				String codigo = rs.getString(2);
+				String descricao = rs.getString(3);
+				String tipo = rs.getString(4);
+				roteiro = new Roteiro(id, codigo, descricao, tipo);
+			}
 			ps.close();
 			rs.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return roteiro;
 	}
 	
 	public static void inserirRoteiro(Roteiro r) {
