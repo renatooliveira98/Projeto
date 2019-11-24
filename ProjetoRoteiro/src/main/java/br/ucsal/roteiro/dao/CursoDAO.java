@@ -81,9 +81,11 @@ public class CursoDAO {
 				Integer id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				Integer duracao = rs.getInt("duracao");
-				Integer idInst = rs.getInt("id_instituicao");
-				Instituicao i = InstituicaoDAO.buscarInstituicao(idInst);
-				Curso curso = new Curso(id, i, nome, duracao);
+					
+				Curso curso = new Curso();
+				curso.setId(id);
+				curso.setNome(nome);
+				curso.setDuracao(duracao);
 				cursos.add(curso);
 			}
 			rs.close();
