@@ -100,35 +100,35 @@ public class UsuarioDAO {
 	public static void inserirUsuario(Usuario usuario) {
 		try {
 			String sql="insert into usuarios (nome, nome_social, email, cpf, senha, id_endereco, id_papel) values(?,?,?,?,?,?,?);";
-			 PreparedStatement pstmt= con.prepareStatement(sql);
-			 pstmt.setString(1, usuario.getNome());
-			 pstmt.setString(2, usuario.getNomeSocial());
-			 pstmt.setString(3, usuario.getEmail());
-			 pstmt.setString(4, usuario.getCpf());
-			 pstmt.setString(5, usuario.getSenha());
-			 pstmt.setInt(6, usuario.getEndereco().getId());
-			 pstmt.setInt(7, usuario.getPapel().getId());
-			 pstmt.execute();
-			 pstmt.close();
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setString(1, usuario.getNome());
+			pstmt.setString(2, usuario.getNomeSocial());
+			pstmt.setString(3, usuario.getEmail());
+			pstmt.setString(4, usuario.getCpf());
+			pstmt.setString(5, usuario.getSenha());
+			pstmt.setInt(6, usuario.getEndereco().getId());
+			pstmt.setInt(7, usuario.getPapel().getId());
+			pstmt.execute();
+			pstmt.close();
 		} catch (SQLException e ) {
-			 e.printStackTrace(); 
+			e.printStackTrace(); 
 		}
 	}
 
 	public static void EditarUsuario(Usuario usuario) {
 		String sql="update usuarios set nome=?, nome_social=?, email=?, cpf=?, senha=?, id_endereco=?, id_papel=? where id=?;";
 		try {
-			 PreparedStatement pstmt= con.prepareStatement(sql);
-			 pstmt.setString(1, usuario.getNome());
-			 pstmt.setString(2, usuario.getNomeSocial());
-			 pstmt.setString(3, usuario.getEmail());
-			 pstmt.setString(4, usuario.getCpf());
-			 pstmt.setString(5, usuario.getSenha());
-			 pstmt.setInt(6, usuario.getEndereco().getId());
-			 pstmt.setInt(7, usuario.getPapel().getId());
-			 pstmt.setInt(8, usuario.getId());
-			 pstmt.executeUpdate();
-			 pstmt.close(); 
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setString(1, usuario.getNome());
+			pstmt.setString(2, usuario.getNomeSocial());
+			pstmt.setString(3, usuario.getEmail());
+			pstmt.setString(4, usuario.getCpf());
+			pstmt.setString(5, usuario.getSenha());
+			pstmt.setInt(6, usuario.getEndereco().getId());
+			pstmt.setInt(7, usuario.getPapel().getId());
+			pstmt.setInt(8, usuario.getId());
+			pstmt.executeUpdate();
+			pstmt.close(); 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -137,10 +137,10 @@ public class UsuarioDAO {
 	public static void DeletarUsuario(Integer id) {
 		String sql = "delete from usuarios where id=?";
 		try {
-			 PreparedStatement pstmt= con.prepareStatement(sql);
-			 pstmt.setInt(1, id);
-			 pstmt.executeUpdate();
-			 pstmt.close();
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
