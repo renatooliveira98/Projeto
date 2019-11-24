@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Instituicao;
-import br.ucsal.roteiro.model.Onibus;
 import br.ucsal.roteiro.util.Conexao;
 
 public class CursoDAO {
