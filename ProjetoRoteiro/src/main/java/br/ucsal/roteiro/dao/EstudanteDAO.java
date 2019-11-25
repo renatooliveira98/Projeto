@@ -43,7 +43,7 @@ public class EstudanteDAO {
 	public static List<Usuario> buscarEstudantes() {
 		List<Usuario> estudantes = new ArrayList<Usuario>();
 		Usuario usuario;
-		String sql = "select * from usuarios where id_papel=1;";
+		String sql = "select * from usuarios where id_papel=2;";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
@@ -116,8 +116,8 @@ public class EstudanteDAO {
 		}
 	}
 
-	public static void DeletarEstudante(Integer id) {
-		String sql="delete from usuarios where id=?";
+	public static void deletarEstudantePeloUsuario(Integer id) {
+		String sql="delete from estudantes where id_usuario=?";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, id);

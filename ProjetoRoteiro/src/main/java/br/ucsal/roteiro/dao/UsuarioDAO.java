@@ -85,7 +85,7 @@ public class UsuarioDAO {
 				Integer idEndereco = rs.getInt("id_endereco");
 				Integer idPapel = rs.getInt("id_papel");
 				Papel p = PapelDAO.buscarPapel(idPapel);
-				Endereco e = EnderecoDAO.obterPonto(idEndereco);
+				Endereco e = EnderecoDAO.buscarEndereco(idEndereco);
 				usuario = new Usuario(idUser, nome, nomeSocial, email, cpf, senha, e, p);
 			}
 		} catch (SQLException e) {
@@ -146,7 +146,8 @@ public class UsuarioDAO {
 		}
 	}
 
-	public static void DeletarUsuario(Integer id) {
+	public static void deletarUsuario(Integer id) {
+		Integer idEnd=UsuarioDAO.buscarUsuario(id).getEndereco().getId();
 		String sql = "delete from usuarios where id=?";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
@@ -156,5 +157,7 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		EnderecoDAO.deletarEndereco(idEnd);
 	}
 }
