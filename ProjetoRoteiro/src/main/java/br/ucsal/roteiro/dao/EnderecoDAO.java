@@ -69,12 +69,18 @@ public class EnderecoDAO {
 
 			ResultSet rs = pstmt.getGeneratedKeys();
 			Integer id = -1;
+			if(rs.next()) {
+				id=rs.getInt("id");
+			}	
 			if(endereco.getUsuario()!=null) {
-				if(rs.next()) {
-					id=rs.getInt("id");
-				}	
+				
 				endereco.getUsuario().getEndereco().setId(id);
 				UsuarioDAO.inserirUsuario(endereco.getUsuario());
+			}
+			
+			if(endereco.getInstituicao()!=null) {
+				endereco.getInstituicao().getEndereco().setId(id);
+				InstituicaoDAO.inserirInstituicao(endereco.getInstituicao());
 			}
 			pstmt.close();
 		} catch (Exception e) {

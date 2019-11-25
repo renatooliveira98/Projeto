@@ -66,6 +66,7 @@ public class EstudanteDAO {
 		}
 		return estudantes;
 	}
+	
 	public static Estudante buscarEstudante(Integer id) {
 		Estudante estudante=null;
 
@@ -127,4 +128,28 @@ public class EstudanteDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public static Estudante buscarEstudantePeloUsuario(Integer idUser) {
+		Estudante estudante=null;
+
+		try {
+			String sql = "select * from estudantes where id_usuario=?;";
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, idUser);
+			ResultSet rs=pstmt.executeQuery();
+
+			if(rs.next()) {
+				Integer idEstudante= rs.getInt("id");
+				Integer idCurso= rs.getInt("id_curso");
+				Integer idUsuario=rs.getInt("id_usuario");
+				Curso c= CursoDAO.buscarCurso(idCurso);
+				Usuario u = UsuarioDAO.buscarUsuario(idUsuario);		
+				estudante = new Estudante(idEstudante, u, null, c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return estudante;		
+	}
+
 }
