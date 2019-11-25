@@ -39,7 +39,7 @@ public class InstituicaoSalvarServlet extends HttpServlet {
 		endereco.setCep(cep);
 		endereco.setCidade(cidade);
 		endereco.setRua(rua);
-		endereco.setNumero(Integer.parseInt(numero));
+		endereco.setNumero(numero);
 		
 		Instituicao instituicao = new Instituicao();
 		instituicao.setNome(nome);
