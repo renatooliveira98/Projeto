@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +64,7 @@
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6 centered">
 						<p class="texto">Transporte Universitário</p>
-						<p class="texto">2019© - Qualquer coisa</p>
+						<p class="texto">2019 © - Qualquer coisa</p>
 					</div>
 					<div class="col-lg-3"></div>			
 				</div>	
