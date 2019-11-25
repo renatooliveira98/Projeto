@@ -4,8 +4,6 @@ public class Onibus {
 
 	private Integer id;
 	private String placa;
-	
-
 	private String detalhes;
 	private String situacao;
 	

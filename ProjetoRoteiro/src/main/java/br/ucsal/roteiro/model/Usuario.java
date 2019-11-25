@@ -10,7 +10,10 @@ public class Usuario {
 	private String senha;
 	private Endereco endereco;
 	private Papel papel;
+	private Estudante estudante;
 	
+
+
 	public Usuario() {
 		super();
 	}
@@ -92,5 +95,14 @@ public class Usuario {
 		this.papel = papel;
 	}
 	
+
+	public Estudante getEstudante() {
+		return estudante;
+	}
+
+
+	public void setEstudante(Estudante estudante) {
+		this.estudante = estudante;
+	}
 	
 }
