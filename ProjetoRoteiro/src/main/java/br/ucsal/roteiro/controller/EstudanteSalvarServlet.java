@@ -66,7 +66,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		endereco.setCep(cep);
 		endereco.setCidade(cidade);
 		endereco.setRua(rua);
-		endereco.setNumero(Integer.parseInt(numero));
+		endereco.setNumero(numero);
 		
 		Estudante estudante = new Estudante();
 		estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));

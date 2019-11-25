@@ -44,7 +44,7 @@ public class EnderecoDAO {
 				String cidade=rs.getString("cidade");
 				String bairro=rs.getString("bairro");
 				String rua=rs.getString("rua");
-				Integer numero=rs.getInt("numero");
+				String numero=rs.getString("numero");
 				endereco= new Endereco(idEnd, cidade, cep, bairro, rua, numero);
 			}
 			ps.close();
@@ -64,7 +64,7 @@ public class EnderecoDAO {
 			pstmt.setString(2, endereco.getCidade());
 			pstmt.setString(3, endereco.getBairro());
 			pstmt.setString(4, endereco.getRua());
-			pstmt.setInt(5, endereco.getNumero());
+			pstmt.setString(5, endereco.getNumero());
 			pstmt.execute();
 
 			ResultSet rs = pstmt.getGeneratedKeys();
