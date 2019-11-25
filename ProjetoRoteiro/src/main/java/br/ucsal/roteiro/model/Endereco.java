@@ -9,6 +9,7 @@ public class Endereco {
 	private String rua;
 	private Integer numero;
 	private Usuario usuario;
+	private Instituicao instituicao;
 		
 	public Endereco() {
 		super();
@@ -80,5 +81,12 @@ public class Endereco {
 		this.usuario = usuario;
 	}
 
-	
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+
 }
