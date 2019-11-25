@@ -8,7 +8,8 @@ public class Endereco {
 	private String bairro;
 	private String rua;
 	private Integer numero;
-	
+	private Usuario usuario;
+		
 	public Endereco() {
 		super();
 	}
@@ -71,5 +72,13 @@ public class Endereco {
 		this.numero = numero;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	
 }
