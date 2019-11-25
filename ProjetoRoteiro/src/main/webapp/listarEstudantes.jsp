@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<a href="./EstudanteForm">Cadastrar Estudante</a>
+	<table border="1px">
 		<thead>
 			<tr>
 				<th>Nome</th>
 				<th>CPF</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -20,6 +22,7 @@
 				<tr>
 					<td>${ e.nome}</td>
 					<td>${e.cpf}</td>
+					<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>|<a>Editar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
