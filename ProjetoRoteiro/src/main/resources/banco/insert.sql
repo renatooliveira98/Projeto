@@ -146,7 +146,7 @@ insert into papeis (id, codigo, descricao) values
 (default,'Administrador', 'Usuário com permissão de administrador'),
 (default,'Estudante', 'Usuário comum');
 
-insert into usuarios (id, nome_social, email, cpf, senha, id_endereco, id_papel) values 
+insert into usuarios (id,nome, nome_social, email, cpf, senha, id_endereco, id_papel) values 
 (default, 'Tony Stark', '', 'admin@ucsal.br', '145.627.723-92', 'admin', 48, 1),
 (default, 'Peter Parker', '', 'peterp@ucsal.br', '573.522.759-01', '1234', 49, 2),
 (default, 'Seu Madruga', '', 'madruga@ucsal.br', '344.343.667.12', '1234', 50, 2),

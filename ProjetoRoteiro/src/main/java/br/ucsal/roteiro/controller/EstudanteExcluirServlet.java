@@ -29,8 +29,9 @@ public class EstudanteExcluirServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		UsuarioDAO.DeletarUsuario(Integer.parseInt(id));
-		EstudanteDAO.DeletarEstudante(Integer.parseInt(id));
+		EstudanteDAO.deletarEstudantePeloUsuario(Integer.parseInt(id));
+		UsuarioDAO.deletarUsuario(Integer.parseInt(id));
+		
 		request.getRequestDispatcher("EstudanteListar").forward(request, response);
 	}
 
