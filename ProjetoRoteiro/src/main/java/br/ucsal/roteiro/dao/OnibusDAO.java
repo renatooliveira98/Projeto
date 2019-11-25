@@ -99,7 +99,7 @@ public class OnibusDAO {
 	public static void removerOnibus(Integer id) {
 		try {
 			String sql = "DELETE FROM onibus where id=?;";
-			
+			//
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
