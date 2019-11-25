@@ -40,7 +40,7 @@ public class OnibusDAO {
 		return onibus;
 	}
 	
-	public static Onibus buscarOnibus(int idOnibus) {
+	public static Onibus buscarOnibus(Integer idOnibus) {
 		Onibus bus = null;
 		try {
 			String sql = "select * from onibus where id=?;";
@@ -81,7 +81,7 @@ public class OnibusDAO {
 		try {
 			String sql = "UPDATE onibus " + 
 					"set detalhes=?, situacao = ?, placa = ? " + 
-					"where onibus_id = ?;";
+					"where id = ?;";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, onibus.getDetalhes());
@@ -96,12 +96,12 @@ public class OnibusDAO {
 		}
 		}
 
-	public static void removerOnibus(Onibus onibus) {
+	public static void removerOnibus(Integer id) {
 		try {
-			String sql = "DELETE FROM onibus where onibus_id=?;";
+			String sql = "DELETE FROM onibus where id=?;";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, onibus.getId());
+			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 			pstmt.close();
 

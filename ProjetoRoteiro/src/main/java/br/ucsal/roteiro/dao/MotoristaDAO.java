@@ -94,12 +94,12 @@ public class MotoristaDAO {
 		}
 	}
 	
-	public static void removerMotorista(Motorista motorista) {
+	public static void removerMotorista(Integer idMotorista) {
 		try {
 			String sql = "DELETE FROM motoristas where motorista_id=?;";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, motorista.getId());
+			pstmt.setInt(1, idMotorista);
 			pstmt.executeUpdate();
 			pstmt.close();
 

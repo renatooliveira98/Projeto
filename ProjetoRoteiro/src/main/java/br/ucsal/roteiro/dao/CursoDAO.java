@@ -9,7 +9,6 @@ import java.util.List;
 
 import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Instituicao;
-import br.ucsal.roteiro.model.Onibus;
 import br.ucsal.roteiro.util.Conexao;
 
 public class CursoDAO {
@@ -28,6 +27,7 @@ public class CursoDAO {
 				String nome = rs.getString(2);
 				int duracao = Integer.parseInt(rs.getString(3));
 				Instituicao instituicao = InstituicaoDAO.buscarInstituicao(Integer.parseInt(rs.getString(4)));
+				//Instituicao instituicao = new Instituicao(1, "UCSAL", null, null);
 				Curso curso = new Curso();
 				curso.setDuracao(duracao);
 				curso.setId(id);
@@ -128,12 +128,12 @@ public class CursoDAO {
 		}
 	}
 	
-	public static void removerCurso(Curso curso) {
+	public static void removerCurso(int idCurso) {
 		try {
 			String sql = "DELETE FROM cursos where curso_id=?;";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, curso.getId());
+			pstmt.setInt(1, idCurso);
 			pstmt.executeUpdate();
 			pstmt.close();
 
