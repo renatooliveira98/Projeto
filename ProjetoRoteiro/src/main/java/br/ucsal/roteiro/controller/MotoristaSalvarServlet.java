@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.CursoDAO;
-import br.ucsal.roteiro.dao.InstituicaoDAO;
 import br.ucsal.roteiro.dao.MotoristaDAO;
 import br.ucsal.roteiro.model.Motorista;
 
