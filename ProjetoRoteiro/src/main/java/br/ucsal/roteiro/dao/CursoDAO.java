@@ -15,10 +15,9 @@ public class CursoDAO {
 
 	public static List<Curso> listarCursos() {
 		List<Curso> cursos = new ArrayList<Curso>();
-		Connection c = Conexao.getConnection();
 		try {
 			String sql = "SELECT * from cursos ;";
-			PreparedStatement pstmt = c.prepareStatement(sql);
+			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -38,7 +37,7 @@ public class CursoDAO {
 			rs.close();
 			pstmt.close();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 		return cursos;
@@ -62,7 +61,7 @@ public class CursoDAO {
 			rs.close();
 			pstmt.close();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 		return curso;
@@ -114,7 +113,7 @@ public class CursoDAO {
 
 	public static void editarCurso(Curso curso) {
 		try {
-			String sql = "UPDATE cursos " + "set nome=?, duracao = ?, id_instituicao = ? " + "where curso_id = ?;";
+			String sql = "UPDATE cursos " + "set nome=?, duracao = ?, id_instituicao = ? " + "where id = ?;";
 
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, curso.getNome());
@@ -131,7 +130,7 @@ public class CursoDAO {
 	
 	public static void removerCurso(int idCurso) {
 		try {
-			String sql = "DELETE FROM cursos where curso_id=?;";
+			String sql = "DELETE FROM cursos where id=?;";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idCurso);

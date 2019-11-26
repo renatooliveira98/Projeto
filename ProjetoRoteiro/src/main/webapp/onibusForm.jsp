@@ -9,7 +9,7 @@
 <title>Gerenciar Onibus</title>
 </head>
 <body>
-<form action="./OnibusSalvar" method="get">
+<form action="./OnibusSalvar" method="post">
 		<input name="id" type="hidden" value="${onibus.id}">
 		Placa: <input type="text" name="placa" value="${onibus.placa}"><br>
 		Detalhes: <input type="text" name="detalhes" value="${onibus.detalhes}"><br>

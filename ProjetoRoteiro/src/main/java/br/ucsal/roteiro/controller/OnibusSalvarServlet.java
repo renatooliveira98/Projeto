@@ -30,7 +30,7 @@ public class OnibusSalvarServlet extends HttpServlet {
 	 */
  
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Onibus onibus = new Onibus();
 		
 		String id = request.getParameter("id"); //hidden
