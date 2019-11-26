@@ -1,6 +1,7 @@
 package br.ucsal.roteiro.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,26 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import br.ucsal.roteiro.dao.CursoDAO;
 import br.ucsal.roteiro.dao.EnderecoDAO;
 import br.ucsal.roteiro.dao.PapelDAO;
-import br.ucsal.roteiro.dao.UsuarioDAO;
+import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Papel;
+import br.ucsal.roteiro.model.Roteiro;
 import br.ucsal.roteiro.model.Usuario;
 
-/**
- * Servlet implementation class EstudanteSalvarServlet
- */
+
 @WebServlet("/EstudanteSalvar")
 public class EstudanteSalvarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	
 	public EstudanteSalvarServlet() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -45,7 +42,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String[] r= request.getParameterValues("reteirosSelecionados");
+		String[] r= request.getParameterValues("reteirosSelecionados");
 		String nome = request.getParameter("nome");
 		String nomeSocial = request.getParameter("nomeSocial");
 		String email = request.getParameter("email"); 
@@ -59,6 +56,10 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		String rua=request.getParameter("rua");
 		String numero=request.getParameter("numero");
 		
+		List<Roteiro> roteiros= new ArrayList<>();
+		for (String idRoteiro : r) {
+			roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
+		}
 		
 		
 		Endereco endereco = new Endereco();
@@ -70,7 +71,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		
 		Estudante estudante = new Estudante();
 		estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
-		
+		estudante.setRoteiros(roteiros);
 		
 	
 		Papel p=PapelDAO.buscarPapel(2);

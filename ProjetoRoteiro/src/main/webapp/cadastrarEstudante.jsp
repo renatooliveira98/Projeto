@@ -19,6 +19,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="atv.css">
 </head>
 <body>
 	<script type="text/javascript">
@@ -96,30 +97,30 @@
 	<input type="text" name="bairro" placeholder="Bairro">
 	<input type="text" name="rua" placeholder="Rua">
 	<input type="text" name="numero" placeholder="Numero">
-	<button type="submit">Enviar</button>
 	
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-lg-6 col-sm-12"> -->
-<!-- 				<label>Roteiros Cadastrados</label> -->
-<!-- 				<div class="form-group"> -->
-<!-- 					<div class=" ms-lista"> -->
-<!-- 						<ul class="list-group list-group-flush" id="listaRoteiro"> -->
-<%-- 							<c:forEach var="r" items="${roteiros}"> --%>
-<%-- 								<li class="list-group-item" value="${r.id}">${r.codigo}</li> --%>
-<%-- 							</c:forEach> --%>
+	
+		<div class="row">
+			<div class="col-lg-6 col-sm-12">
+				<label>Roteiros Cadastrados</label>
+				<div class="form-group">
+					<div class=" ms-lista">
+						<ul class="list-group list-group-flush" id="listaRoteiro">
+							<c:forEach var="r" items="${roteiros}">
+								<li class="list-group-item" value="${r.id}">${r.codigo}</li>
+							</c:forEach>
 
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="col-lg-6 col-sm-12"> -->
-<!-- 				<label>Roteiros do Estudante</label> -->
-<!-- 				<div class="ms-lista"> -->
-<!-- 					<ul id="lstTag" class="list-group list-group-flush listaAtv"></ul> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-		
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-sm-12">
+				<label>Roteiros do Estudante</label>
+				<div class="ms-lista">
+					<ul id="lstTag" class="list-group list-group-flush listaAtv"></ul>
+				</div>
+			</div>
+		</div>
+		<button type="submit">Enviar</button>
 		
 	</form>
 	<br />

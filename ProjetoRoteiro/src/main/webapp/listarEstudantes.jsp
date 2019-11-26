@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="./instituicaoForm.jsp">Cadastrar Estudante</a>
+	<a href="./EstudanteForm">Cadastrar Estudante</a>
 	<table border="1px">
 		<thead>
 			<tr>
