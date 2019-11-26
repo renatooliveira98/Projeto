@@ -26,7 +26,7 @@ public class EstudanteFormServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("roteiros", RoteiroDAO.listarRoteiros());
-		//request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
+		request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
 		request.setAttribute("cursos", CursoDAO.listarCursos());
 		request.getRequestDispatcher("cadastrarEstudante.jsp").forward(request, response);
 	}

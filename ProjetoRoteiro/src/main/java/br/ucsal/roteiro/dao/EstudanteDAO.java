@@ -6,11 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Papel;
+import br.ucsal.roteiro.model.Roteiro;
 import br.ucsal.roteiro.model.Usuario;
 import br.ucsal.roteiro.util.Conexao;
 
@@ -91,14 +93,41 @@ public class EstudanteDAO {
 	}
 
 	public static void inserirEstudante(Estudante estudante) {
-		String sql = "insert into roteiro_estudante ( id_curso, id_usuario)  values(?,?);";
+		String sql = "insert into estudantes ( id_curso, id_usuario)  values(?,?);";
 		try {
-			PreparedStatement pstmt= con.prepareStatement(sql);
+			PreparedStatement pstmt= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
 			pstmt.setInt(1, estudante.getCurso().getId());
 			pstmt.setInt(2, estudante.getUsuario().getId()); 
 			pstmt.execute();
+			
+			ResultSet rs = pstmt.getGeneratedKeys();
+			Integer id = -1;
+			
+			if(rs.next()) {
+				id=rs.getInt("id");
+			}
+			estudante.setId(id);
+			inserRoteiroEstudante(estudante);
 			pstmt.close(); 
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void inserRoteiroEstudante(Estudante estudante) {
+		String sql= "insert into roteiro_estudante (id_roteiro, id_estudante) values ( ?, ?);";
+		
+		try {
+			for (Roteiro roteiro : estudante.getRoteiros()) {
+				PreparedStatement pstmt= con.prepareStatement(sql);
+				pstmt.setInt(1, roteiro.getId());
+				pstmt.setInt(2, estudante.getId());
+				pstmt.executeUpdate();
+				pstmt.close();
+			}
+			
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
