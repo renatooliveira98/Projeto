@@ -2,6 +2,7 @@ package br.ucsal.roteiro.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Programacao {
 
@@ -12,7 +13,8 @@ public class Programacao {
 	private LocalTime horaIda;
 	private LocalTime horaVolta;
 	private Motorista motorista;
-	
+	private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	private DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm");
 	public Programacao() {
 		super();
 	}

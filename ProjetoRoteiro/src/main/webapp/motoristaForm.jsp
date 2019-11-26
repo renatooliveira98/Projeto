@@ -9,7 +9,7 @@
 <title>Cadastrar Motorista</title>
 </head>
 <body>
-<form action="./MotoristaSalvar" method="get">
+<form action="./MotoristaSalvar" method="post">
 		<input name="id" type="hidden" value="${motorista.id}"> <br>
 		Nome: <input type="text" name="nome" value="${motorista.nome}"><br>
 		Descricao: <input type="text" name="descricao" value="${motorista.descricao}"><br>

@@ -31,7 +31,7 @@ public class CursoSalvarServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Curso curso = new Curso();
 		
 		String id = request.getParameter("id"); //hidden
@@ -53,7 +53,7 @@ public class CursoSalvarServlet extends HttpServlet {
 			CursoDAO.inserirCurso(curso);
 		}
 		
-		response.sendRedirect("./CursoListaServlet");
+		response.sendRedirect("./CursoLista");
 		
 	}
 

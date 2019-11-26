@@ -44,7 +44,7 @@ public class MotoristaDAO {
 	public static Motorista buscarMotorista(int idMotorista) {
 		Motorista motorista = null;
 		try {
-			String sql = "select * from motorista where id=?;";
+			String sql = "select * from motoristas where id=?;";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idMotorista);
 			ResultSet rs = pstmt.executeQuery();

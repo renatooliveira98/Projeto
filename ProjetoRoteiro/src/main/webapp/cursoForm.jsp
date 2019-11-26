@@ -8,7 +8,7 @@
 <title>Gerenciar Cursos</title>
 </head>
 <body>
-	<form action="./CursoSalvar" method="get">
+	<form action="./CursoSalvar" method="post">
 		<input name="id" type="hidden" value="${curso.id}"> Nome do
 		Curso: <input type="text" name="nome" value="${curso.nome}">
 		Instituição: <select name="instituicao">
@@ -19,7 +19,7 @@
 							</c:forEach>
 						</option>
 					</select> 
-		Duração:: <input type="text" name="duracao" value="${curso.nome}">
+		Duração:: <input type="text" name="duracao" value="${curso.duracao}">
 		<button type="submit">Salvar</button>
 	</form>
 
