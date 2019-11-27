@@ -28,6 +28,6 @@ public class RoteiroFormServlet extends HttpServlet {
 		}
 		request.setAttribute("pontos", PontoDAO.listarPontos());
 		request.setAttribute("roteiro", roteiro);
-		request.getRequestDispatcher("roteitoForm.jsp").forward(request, response);
+		request.getRequestDispatcher("roteiroForm.jsp").forward(request, response);
 	}
 }

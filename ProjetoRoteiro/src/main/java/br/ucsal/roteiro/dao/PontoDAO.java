@@ -41,18 +41,27 @@ public class PontoDAO {
 		return pontos;
 	}
 	
-	public static void obterPonto(Integer idPonto) {
+	public static Ponto obterPonto(Integer idPonto) {
+		Ponto ponto=null;
 		try {
-			String sql = "select * from pontos where id=?"; 
-			PreparedStatement ps = con.prepareStatement(sql);
 			
+			String sql = "select * from pontos where id=?"; 
+			PreparedStatement ps = con.prepareStatement(sql);	
 			ps.setInt(1, idPonto);
 			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				Integer id = rs.getInt("id");
+				String descricao = rs.getString("descricao");
+				Float x = rs.getFloat("x");
+				Float y = rs.getFloat("y");
+				ponto = new Ponto(id, descricao, x, y);
+			}
 			ps.close();
 			rs.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return ponto;
 	} 
 	
 	public static void inserirPonto(Ponto r) {
