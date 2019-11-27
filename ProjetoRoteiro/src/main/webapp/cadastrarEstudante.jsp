@@ -35,46 +35,27 @@
 								chkRptTag = true;
 							}
 					});
+					
 					if (!chkRptTag) {
-						$("#lstTag").append("<li class='list-group-item' value='"
-																			+ $(
-																					this)
-																					.val()
-																			+ "'>"
-																			+ $(
-																					this,
-																					"option:selected")
-																					.text()
-																			+ "<input type='checkbox' name='reteirosSelecionados' id='chkTags' class='chkTags' checked='checked' value='"
-																			+ $(
-																					this,
-																					"option:selected")
-																					.val()
-																			+ "'></li>");
-													$(this).remove();
-												}
-											});
-							$('#lstTag').on('click','li',function() {
-								$("#atvs").append("<li class='list-group-item AtividadeOSId' name='reteirosSelecionados' value='"
-														+ $(this).val() + "'>"
-														+ $(this).text()
-														+ "</li>");
-										$(this).remove();
-										
-										return false;
-									});
-
-						});
+						$("#lstTag").append(
+					"<li class='list-group-item' value='"+ $(this).val()+ "'>"+ $(this,"option:selected").text()
+					+ "<input type='checkbox' name='roteirosSelecionados' id='chkTags' class='chkTags' checked='checked' value='"
+					+ $(this,"option:selected").val()+ "'></li>");
+					$(this).remove();
+					}
+					
+				});
+			
+				$('#lstTag').on('click','li',function() {
+					$("#listaRoteiro").append("<li class='list-group-item ' name='roteirosSelecionados' value='"
+					+ $(this).val() + "'>"+ $(this).text()+ "</li>");
+					$(this).remove();
+					return false;
+				});
+				
+});
 	</script>
-	<style>
-.chkTags {
-	display: none;
-}
 
-#lstTag li {
-	cursor: pointer;
-}
-</style>
 <!--  class="form-control"  -->
 	<form method="post" action="EstudanteSalvar">
 	<input type="text" name="nome" placeholder="Nome">
@@ -116,7 +97,7 @@
 			<div class="col-lg-6 col-sm-12">
 				<label>Roteiros do Estudante</label>
 				<div class="ms-lista">
-					<ul id="lstTag" class="list-group list-group-flush listaAtv"></ul>
+					<ul id="lstTag" class="list-group list-group-flush "></ul>
 				</div>
 			</div>
 		</div>

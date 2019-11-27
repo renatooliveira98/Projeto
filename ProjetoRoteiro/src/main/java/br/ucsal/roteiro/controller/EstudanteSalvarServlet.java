@@ -42,7 +42,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] r= request.getParameterValues("reteirosSelecionados");
+		String[] r= request.getParameterValues("roteirosSelecionados");
 		String nome = request.getParameter("nome");
 		String nomeSocial = request.getParameter("nomeSocial");
 		String email = request.getParameter("email"); 

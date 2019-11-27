@@ -3,9 +3,11 @@ package br.ucsal.roteiro.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ucsal.roteiro.model.Ponto;
 import br.ucsal.roteiro.model.Roteiro;
 import br.ucsal.roteiro.util.Conexao;
 
@@ -66,21 +68,42 @@ public class RoteiroDAO {
 	
 	public static void inserirRoteiro(Roteiro r) {
 		try {
-			String sql = "insert into roteiros values(?,?,?,?);";
-			PreparedStatement ps = con.prepareStatement(sql);
+			String sql = "insert into roteiros( CODIGO, DESCRICAO, TIPO ) values(?,?,?);";
+			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			Integer id = r.getId();
-			ps.setInt(1, id);
-			ps.setString(2, r.getCodigo());
-			ps.setString(3, r.getDescricao());
-			ps.setString(4, r.getTipo());
+			ps.setString(1, r.getCodigo());
+			ps.setString(2, r.getDescricao());
+			ps.setString(3, r.getTipo());
+			ps.execute();
 			
-			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			Integer idRoteiro = -1;
+			
+			if(rs.next()) {
+				idRoteiro=rs.getInt("id");
+			}
+			r.setId(idRoteiro);
+			inserirRoteiroPonto(r);
 			ps.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void inserirRoteiroPonto(Roteiro roteiro) {
+		String sql="insert into roteiro_ponto (id_roteiro, id_ponto) values(?,?)";
+		try {
+			for (Ponto p : roteiro.getPontos()) {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, roteiro.getId());
+				ps.setInt(2, p.getId());
+				ps.executeUpdate();
+				ps.close();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void excluirRoteiro(Integer idRoteiro) {

@@ -101,4 +101,13 @@
     color: #000000;
 }
 
+.chkTags {
+	display: none;
+}
+
+#lstTag li {
+	cursor: pointer;
+}
+
+
 

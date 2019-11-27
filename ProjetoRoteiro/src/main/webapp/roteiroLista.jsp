@@ -8,7 +8,7 @@
 <title>Lista de roteiros</title>
 </head>
 <body>
-
+<a href="./RoteiroForm">Cadastrar Roteiro</a>
 	<table border="1">
 			<tr>
 				<th>Id</th>
