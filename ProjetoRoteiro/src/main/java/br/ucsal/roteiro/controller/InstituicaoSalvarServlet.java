@@ -37,7 +37,7 @@ public class InstituicaoSalvarServlet extends HttpServlet {
 		String numero=request.getParameter("numero");
 
 		Instituicao instituicao = null;
-		if(idS!=null && idS.trim().isEmpty()) {
+		if(idS==null || idS.trim().isEmpty()) {
 			Endereco endereco = new Endereco();
 			endereco.setBairro(bairro);
 			endereco.setCep(cep);
@@ -53,7 +53,7 @@ public class InstituicaoSalvarServlet extends HttpServlet {
 			EnderecoDAO.inserirEndereco(endereco);
 		}else {
 			instituicao= InstituicaoDAO.buscarInstituicao(Integer.parseInt(idS));
-			Endereco endereco = EnderecoDAO.buscarEndereco(instituicao.getId());
+			Endereco endereco = EnderecoDAO.buscarEndereco(instituicao.getEndereco().getId());
 			endereco.setBairro(bairro);
 			endereco.setCep(cep);
 			endereco.setCidade(cidade);

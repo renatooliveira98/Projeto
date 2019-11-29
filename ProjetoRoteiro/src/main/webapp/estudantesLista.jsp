@@ -22,7 +22,7 @@
 				<tr>
 					<td>${ e.nome}</td>
 					<td>${e.cpf}</td>
-					<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>|<a>Editar</a></td>
+					<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>|<a href="./EstudanteForm?id=${e.id}">Editar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

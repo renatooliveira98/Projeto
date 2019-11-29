@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.ucsal.roteiro.dao.CursoDAO;
 import br.ucsal.roteiro.dao.EnderecoDAO;
+import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.PapelDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
+import br.ucsal.roteiro.dao.UsuarioDAO;
 import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Papel;
@@ -24,15 +26,13 @@ import br.ucsal.roteiro.model.Usuario;
 public class EstudanteSalvarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
+
 	public EstudanteSalvarServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -42,44 +42,74 @@ public class EstudanteSalvarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idUserS= request.getParameter("id");
+
 		String[] r= request.getParameterValues("roteirosSelecionados");
+
 		String nome = request.getParameter("nome");
 		String nomeSocial = request.getParameter("nomeSocial");
 		String email = request.getParameter("email"); 
 		String cpf=request.getParameter("cpf");
 		String senha= request.getParameter("senha");
 		String sIdCurso= request.getParameter("curso");
-		
+
 		String bairro =request.getParameter("bairro");
 		String cep=request.getParameter("cep");
 		String cidade=request.getParameter("cidade");
 		String rua=request.getParameter("rua");
 		String numero=request.getParameter("numero");
-		
+
 		List<Roteiro> roteiros= new ArrayList<>();
-		for (String idRoteiro : r) {
-			roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
+		if(r!= null ) {
+			for (String idRoteiro : r) {
+				roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
+			}
 		}
-		
-		
-		Endereco endereco = new Endereco();
-		endereco.setBairro(bairro);
-		endereco.setCep(cep);
-		endereco.setCidade(cidade);
-		endereco.setRua(rua);
-		endereco.setNumero(numero);
-		
-		Estudante estudante = new Estudante();
-		estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
-		estudante.setRoteiros(roteiros);
-		
-	
 		Papel p=PapelDAO.buscarPapel(2);
-		Usuario usuario = new Usuario(null, nome, nomeSocial, email, cpf, senha, endereco, p);
-		estudante.setUsuario(usuario);
-		usuario.setEstudante(estudante);
-		endereco.setUsuario(usuario);
-		EnderecoDAO.inserirEndereco(endereco);
+		Estudante estudante= null;
+		if(idUserS== null) {
+			System.out.println("inserir");
+			Endereco endereco = new Endereco();
+			endereco.setBairro(bairro);
+			endereco.setCep(cep);
+			endereco.setCidade(cidade);
+			endereco.setRua(rua);
+			endereco.setNumero(numero);
+
+			estudante = new Estudante();
+			estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
+			estudante.setRoteiros(roteiros);
+
+
+			Usuario usuario = new Usuario(null, nome, nomeSocial, email, cpf, senha, endereco, p);
+			//estudante.setUsuario(usuario); //apagar depois
+			usuario.setEstudante(estudante);
+			endereco.setUsuario(usuario);
+			EnderecoDAO.inserirEndereco(endereco);
+		}else {
+			System.out.println("editar");
+			estudante= EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idUserS));
+			Endereco endereco = EnderecoDAO.buscarEndereco(estudante.getUsuario().getEndereco().getId());
+			endereco.setBairro(bairro);
+			endereco.setCep(cep);
+			endereco.setCidade(cidade);
+			endereco.setRua(rua);
+			endereco.setNumero(numero);
+
+			estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
+
+			Usuario usuario = UsuarioDAO.buscarUsuario(Integer.parseInt(idUserS));
+			usuario.setNome(nome);
+			usuario.setNomeSocial(nomeSocial);
+			usuario.setEmail(email); 
+			usuario.setCpf(cpf);
+			usuario.setSenha(senha);
+
+			usuario.setEndereco(endereco);
+			usuario.setEstudante(estudante);
+			UsuarioDAO.EditarUsuario(usuario);
+		}
+
 		response.sendRedirect("./EstudanteListar");
 
 	}
