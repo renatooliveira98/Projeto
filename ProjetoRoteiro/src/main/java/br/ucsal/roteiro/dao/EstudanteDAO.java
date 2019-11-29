@@ -133,7 +133,7 @@ public class EstudanteDAO {
 	}
 
 	public static void EditarEstudante(Estudante estudante) {
-		String sql ="update usuarios set id_curso=?, id_usuario=? where id=?";
+		String sql ="update estudantes set id_curso=?, id_usuario=? where id=?";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, estudante.getCurso().getId());
@@ -144,6 +144,7 @@ public class EstudanteDAO {
 		} catch (Exception e) {
 			e.printStackTrace();	
 		}
+	
 	}
 
 	public static void deletarEstudantePeloUsuario(Integer id) {

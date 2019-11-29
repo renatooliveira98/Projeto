@@ -58,26 +58,28 @@
 
 <!--  class="form-control"  -->
 	<form method="post" action="EstudanteSalvar">
-	<input type="text" name="nome" placeholder="Nome">
-	<input type="text" name="nomeSocial" placeholder="Nome Social">
-	<input type="email" name="email" placeholder="E-mail">
-	<input type="text" name="cpf" placeholder="CPF">
-	<input type="password" name="senha" placeholder="Senha">
+	<input type="hidden" name="id" value="${estudante.id}">
+	<input type="text" name="nome" placeholder="Nome" value="${estudante.usuario.nome}">
+	<input type="text" name="nomeSocial" placeholder="Nome Social" value="${estudante.usuario.nomeSocial}">
+	<input type="email" name="email" placeholder="E-mail" value="${estudante.usuario.email}">
+	<input type="text" name="cpf" placeholder="CPF" value="${estudante.usuario.cpf}">
+	<input type="password" name="senha" placeholder="Senha" value="${estudante.usuario.senha}">
 	
 	<hr>
 	<label>Curso</label>
 	<select name="curso">
 	<c:forEach var="c" items="${cursos}">
-		<option value="${c.id}">${c.nome}</option>
+
+		<option value="${c.id}" ${ c.id == estudante.curso.id ? 'selected' : ''} >${c.nome} </option>
 	</c:forEach>
 	</select>
 	<hr>
 	<label>Endereço</label><br>
-	<input type="text" name="cep" placeholder="Cep">
-	<input type="text" name="cidade" placeholder="Cidade">
-	<input type="text" name="bairro" placeholder="Bairro">
-	<input type="text" name="rua" placeholder="Rua">
-	<input type="text" name="numero" placeholder="Numero">
+	<input type="text" name="cep" placeholder="Cep" value="${estudante.usuario.endereco.cep}">
+	<input type="text" name="cidade" placeholder="Cidade" value="${estudante.usuario.endereco.cidade}">
+	<input type="text" name="bairro" placeholder="Bairro" value="${estudante.usuario.endereco.bairro}">
+	<input type="text" name="rua" placeholder="Rua" value="${estudante.usuario.endereco.rua}">
+	<input type="text" name="numero" placeholder="Numero" value="${estudante.usuario.endereco.numero}">
 	
 	
 		<div class="row">

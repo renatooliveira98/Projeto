@@ -128,7 +128,7 @@ public class UsuarioDAO {
 	}
 
 	public static void EditarUsuario(Usuario usuario) {
-		String sql="update usuarios set nome=?, nome_social=?, email=?, cpf=?, senha=?, id_endereco=?, id_papel=?, where id=?;";
+		String sql="update usuarios set nome=?, nome_social=?, email=?, cpf=?, senha=?, id_endereco=?, id_papel=? where id=?;";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setString(1, usuario.getNome());
@@ -144,6 +144,8 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		EstudanteDAO.EditarEstudante(usuario.getEstudante());
+		EnderecoDAO.editarEndereco(usuario.getEndereco());
 	}
 
 	public static void deletarUsuario(Integer id) {

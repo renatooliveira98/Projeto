@@ -14,9 +14,7 @@ import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.dao.UsuarioDAO;
 import br.ucsal.roteiro.model.Usuario;
 
-/**
- * Servlet implementation class EstudanteFormServlet
- */
+
 @WebServlet("/EstudanteForm")
 public class EstudanteFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +30,7 @@ public class EstudanteFormServlet extends HttpServlet {
 		request.setAttribute("roteiros", RoteiroDAO.listarRoteiros());
 		request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
 		request.setAttribute("cursos", CursoDAO.listarCursos());
-		request.setAttribute("estudante", UsuarioDAO.buscarUsuario(Integer.parseInt(idS)));		
+		request.setAttribute("estudante", EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idS)));		
 		request.getRequestDispatcher("estudanteForm.jsp").forward(request, response);
 	}
 	
