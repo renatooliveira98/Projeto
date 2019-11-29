@@ -98,7 +98,24 @@ public class EnderecoDAO {
 			pstmt.close();
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}	
+	}
+	
+	public static void editarEndereco(Endereco endereco) {
+		String sql ="update enderecos set cep=?, cidade=?, bairro=?, rua=?, numero=? where id=?";
 		
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setString(1, endereco.getCep());
+			pstmt.setString(2, endereco.getCidade());
+			pstmt.setString(3, endereco.getBairro());
+			pstmt.setString(4, endereco.getRua());
+			pstmt.setString(5, endereco.getNumero());
+			pstmt.setInt(6, endereco.getId());
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

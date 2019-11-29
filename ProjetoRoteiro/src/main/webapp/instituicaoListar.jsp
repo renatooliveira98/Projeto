@@ -20,7 +20,7 @@
 			<c:forEach var="i" items="${instituicoes}">
 				<tr>
 					<td>${i.nome}</td>
-					<td><a href="./InstituicaoExcluir?id=${i.id}">Excluir</a>|<a>Editar</a></td>
+					<td><a href="./InstituicaoExcluir?id=${i.id}">Excluir</a>|<a href="./InstituicaoForm?id=${i.id}">Editar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -141,4 +141,16 @@ public class CursoDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void removerCursosPelaInstituicao(Integer idInstituicao) {
+		String sql="delete from cursos where id_instituicao=?";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, idInstituicao);
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
