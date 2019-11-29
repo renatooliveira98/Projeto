@@ -26,7 +26,7 @@ public class EstudanteListarServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("estudantes", EstudanteDAO.buscarEstudantes());
-		request.getRequestDispatcher("listarEstudantes.jsp").forward(request, response);
+		request.getRequestDispatcher("estudantesLista.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
