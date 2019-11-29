@@ -74,21 +74,22 @@ public class InstituicaoDAO {
 	}
 
 	public static void EditarInstituicao(Instituicao instituicao) {
-		String sql="update instituicoes set nome=?, id_endereco=? where id=?";
+		String sql="update instituicoes set nome=? where id=?";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setString(1, instituicao.getNome());
-			pstmt.setInt(2, instituicao.getEndereco().getId());
-			pstmt.setInt(3, instituicao.getId());
+			pstmt.setInt(2, instituicao.getId());
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		EnderecoDAO.editarEndereco(instituicao.getEndereco());
 	}
 
 	public static void DeletarInstituicao(Integer id) {
-		String sql="delete from usuarios where id=?";
+		CursoDAO.removerCursosPelaInstituicao(id);
+		String sql="delete from instituicoes where id=?";
 		try {
 			PreparedStatement pstmt= con.prepareStatement(sql);
 			pstmt.setInt(1, id);
