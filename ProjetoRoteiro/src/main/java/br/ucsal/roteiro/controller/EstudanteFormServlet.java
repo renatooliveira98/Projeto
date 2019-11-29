@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.roteiro.dao.CursoDAO;
+import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.InstituicaoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
+import br.ucsal.roteiro.dao.UsuarioDAO;
+import br.ucsal.roteiro.model.Usuario;
 
 /**
  * Servlet implementation class EstudanteFormServlet
@@ -25,10 +28,12 @@ public class EstudanteFormServlet extends HttpServlet {
 	}
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idS= request.getParameter("id");
 		request.setAttribute("roteiros", RoteiroDAO.listarRoteiros());
 		request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
 		request.setAttribute("cursos", CursoDAO.listarCursos());
-		request.getRequestDispatcher("cadastrarEstudante.jsp").forward(request, response);
+		request.setAttribute("estudante", UsuarioDAO.buscarUsuario(Integer.parseInt(idS)));		
+		request.getRequestDispatcher("estudanteForm.jsp").forward(request, response);
 	}
 	
 
