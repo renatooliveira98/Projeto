@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
+	<div class="perfil" ign="center">
 		Bem vindo, ${usuario.email} | <a href="./Logout">Sair</a>
 	</div>
 </body>
