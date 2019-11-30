@@ -18,8 +18,8 @@
 	background-color: #02153D;
 }
 
-.perfil{
-	background-color: #EEF6F8;
+#conteudo{
+	background-color: #FFFFFF;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	top: 60px;
@@ -59,6 +59,15 @@
 	letter-spacing: 0.5px;
 }
 
+.tituloForm{
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: #02153D; 
+	letter-spacing: 0.5px;
+}
+
 .texto{
 	text-align: center;
 	font-family: Segoe UI;
@@ -80,7 +89,15 @@
 
 }
 
+
+
 .btnLogin{
+	background-color: #02153D;
+	color: #FFFFFF; 
+
+}
+
+.btnPadrao{
 	background-color: #02153D;
 	color: #FFFFFF; 
 
