@@ -83,17 +83,8 @@ public class PontoDAO {
 	}
 	
 	public static void excluirPonto(Integer idPonto) {
-		try {
-			String sql = "delete from roteiro_ponto where id_ponto=?;";
-			PreparedStatement ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, idPonto);
-			ps.executeUpdate();
-			ps.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+
+		RoteiroPontoDAO.excluirPonto(idPonto);
 		try {
 			String sql = "delete from pontos where id=?;";
 			PreparedStatement ps = con.prepareStatement(sql);
