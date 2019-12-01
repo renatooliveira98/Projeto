@@ -19,16 +19,22 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
+		String email = request.getParameter("login");
 		String senha = request.getParameter("senha");
-		
 		Usuario usuario = new Usuario();
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		
-		if(UsuarioDAO.autenticarUsuario(usuario) != null) {
+		usuario = UsuarioDAO.autenticarUsuario(usuario);
+		System.out.println(usuario.getPapel().getId());
+		if(usuario != null) {
 			request.getSession().setAttribute("usuario", usuario);
-			response.sendRedirect("./PerfilServlet");
+			if(usuario.getPapel().getId()==2) //adm
+				response.sendRedirect("./PerfilEstudante");
+			if(usuario.getPapel().getId()==1) {
+				response.sendRedirect("./PerfilAdministrador");
+				System.out.println("entrou");
+			}
 		}else {
 			request.setAttribute("erro", "E-mail ou senha inválido!");
 			request.getRequestDispatcher("./index.jsp").forward(request, response);

@@ -23,25 +23,30 @@ public class ProgramacaoDAO {
 //	private static DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm:ss");	
 	private static Connection con = Conexao.getConnection();
 	
-//	public static void main(String args[]) {
-//		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm:ss");
-//		
-//		
-//		LocalDate dia = LocalDate.parse("2019-08-17", dateFormat);
-//		LocalTime horaIda = LocalTime.parse("12:00:00", timeFormat);
-//		LocalTime horaVolta = LocalTime.parse("17:00:00", timeFormat);
-//		Programacao programacao = new Programacao();
-//		programacao.setDia(dia);
-//		programacao.setHoraIda(horaIda);
-//		programacao.setHoraVolta(horaVolta);
-//		programacao.setMotorista(MotoristaDAO.buscarMotorista(4));
-//		programacao.setOnibus(OnibusDAO.buscarOnibus(9));
-//		programacao.setRoteiro(RoteiroDAO.obterRoteiro(4));
-//		inserirProgramacao(programacao);
-//		
-//		
-//	}
+	public static void main(String args[]) {
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm:ss");
+		
+		
+		LocalDate dia = LocalDate.parse("2019-08-17", dateFormat);
+		LocalTime horaIda = LocalTime.parse("12:00:50", timeFormat);
+		LocalTime horaVolta = LocalTime.parse("17:00:00", timeFormat);
+		Programacao programacao = new Programacao();
+		programacao.setDia(dia);
+		programacao.setHoraIda(horaIda);
+		programacao.setHoraVolta(horaVolta);
+		programacao.setMotorista(MotoristaDAO.buscarMotorista(4));
+		programacao.setOnibus(OnibusDAO.buscarOnibus(9));
+		programacao.setRoteiro(RoteiroDAO.obterRoteiro(4));
+		inserirProgramacao(programacao);
+		
+		Programacao p = buscarProgramacao(2);
+		
+		System.out.println(p.getId());
+		System.out.println(p.getHoraIda());
+		
+		
+	}
 	
 	public static List<Programacao> listarProgramacoes(){
 		

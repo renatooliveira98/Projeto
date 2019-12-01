@@ -16,8 +16,8 @@
 							<c:forEach var="instituicao" items="${instituicoes}">
 							<option value="${instituicao.id}"
 							${ instituicao.id == curso.instituicao.id ? 'selected' : ''}>${instituicao.nome}
+							</option>
 							</c:forEach>
-						</option>
 					</select> 
 		Duração:: <input type="text" name="duracao" value="${curso.duracao}">
 		<button type="submit">Salvar</button>

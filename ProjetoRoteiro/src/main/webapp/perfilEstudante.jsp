@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div align="center">
+		Perfil do Estudante
 		Bem vindo, ${usuario.email} | <a href="./Logout">Sair</a>
 	</div>
 </body>
