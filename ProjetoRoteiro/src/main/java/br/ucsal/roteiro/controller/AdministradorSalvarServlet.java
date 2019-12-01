@@ -46,7 +46,7 @@ public class AdministradorSalvarServlet extends HttpServlet {
 		Papel p=PapelDAO.buscarPapel(1);
 		
 		if(idUserS== null || idUserS.trim().isEmpty()) {
-			System.out.println("inserir");
+			
 			Endereco endereco = new Endereco();
 			endereco.setBairro(bairro);
 			endereco.setCep(cep);
