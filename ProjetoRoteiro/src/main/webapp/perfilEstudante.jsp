@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
+	<div class="perfil" ign="center">
 		Bem vindo, ${usuario.email} | <a href="./Logout">Sair</a>
 	</div>
 </body>
