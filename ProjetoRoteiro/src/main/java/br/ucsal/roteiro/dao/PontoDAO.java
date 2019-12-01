@@ -64,16 +64,16 @@ public class PontoDAO {
 		return ponto;
 	} 
 	
-	public static void inserirPonto(Ponto r) {
+	public static void inserirPonto(Ponto p) {
 		try {
 			String sql = "insert into pontos values(?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			Integer id = r.getId();
+			Integer id = p.getId();
 			ps.setInt(1, id);
-			ps.setString(2, r.getDescricao());
-			ps.setFloat(3, r.getX());
-			ps.setFloat(4, r.getY());
+			ps.setString(2, p.getDescricao());
+			ps.setFloat(3, p.getX());
+			ps.setFloat(4, p.getY());
 			ResultSet rs = ps.executeQuery();
 			ps.close();
 			rs.close();
@@ -84,11 +84,22 @@ public class PontoDAO {
 	
 	public static void excluirPonto(Integer idPonto) {
 		try {
-			String sql = "delete from pontos where id=?";
+			String sql = "delete from roteiro_ponto where id_ponto=?;";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, idPonto);
-			ps.executeQuery();
+			ps.executeUpdate();
+			ps.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			String sql = "delete from pontos where id=?;";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idPonto);
+			ps.executeUpdate();
 			ps.close();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -97,7 +108,7 @@ public class PontoDAO {
 	
 	public static void editarPonto(Ponto p) {
 		try {
-			String sql = "upadet pontos set id=?, descricao=?, x=?, y=?";
+			String sql = "update pontos set id=?, descricao=?, x=?, y=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, p.getId());
