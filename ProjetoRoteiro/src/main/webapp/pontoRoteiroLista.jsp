@@ -10,7 +10,7 @@
 	rel="stylesheet" />
 <title>Lista de pontos por roteiro</title>
 </head>
-<body>
+<body class="body2">
 
 	<div class="container body-content ">
 		<div class="row">

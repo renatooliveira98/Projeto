@@ -9,7 +9,7 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Cadastrar Motorista</title>
 </head>
-<body>
+<body class="body2">
 <form action="./PontoSalvar" method="post">
 		<input name="id" type="hidden" value="${ponto.id}"> <br>
 		Descrição: <input type="text" name="descricao" value="${ponto.descricao}"><br>

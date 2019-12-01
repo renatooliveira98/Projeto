@@ -9,7 +9,7 @@
 <title>Gerenciar Cursos</title>
 <link rel="stylesheet" type="text/css" href="atv.css">
 </head>
-<body>
+<body class="body2">
 	<div class="container body-content ">
 		<div class="row">
 			<div class="col-lg-1"></div>

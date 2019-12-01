@@ -11,7 +11,7 @@
 
 	<link rel="stylesheet" type="text/css" href="atv.css">
 </head>
-<body>
+<body class="body2">
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#listaRoteiro").on("click","li",function() {

@@ -20,7 +20,7 @@
 	<br />
 
 
-	<a class="btn btn-default" href="./CursoForm">Novo Curso</a>
+	
 
 	<br />
 
@@ -30,6 +30,7 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+				<a  href="./CursoForm">Novo Curso</a>
 					<table class="table">
 						<thead>
 							<tr>
@@ -37,7 +38,7 @@
 								<th scope="col">Nome</th>
 								<th scope="col">Instituicao</th>
 								<th scope="col">Duracao</th>
-								<th scope="col"></th>
+								<!-- <th scope="col"><a  href="./CursoForm">Novo Curso</a></th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -47,8 +48,10 @@
 									<td>${c.nome}</td>
 									<td>${c.instituicao.nome}</td>
 									<td>${c.duracao}</td>
-									<td><a href='./CursoForm?id=${c.id}'><i class="material-icons">edit</i></a> 
-									<a href='./CursoExcluir?id=${c.id}'><i class="material-icons">delete</i></a></td>
+  
+									<!--  <td><a href='./CursoForm?id=${c.id}'><i class="material-icons">edit</i></a> 
+									<a href='./CursoExcluir?id=${c.id}'><i class="material-icons">delete</i></a></td>-->
+									
 								</tr>
 							</c:forEach>
 						</tbody>
