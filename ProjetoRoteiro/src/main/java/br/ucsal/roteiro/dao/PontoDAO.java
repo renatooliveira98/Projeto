@@ -119,4 +119,26 @@ public class PontoDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public static List<Ponto> listarPontosPorRoteiro(Integer idRoteiro){
+		List<Ponto> pontos = new ArrayList<Ponto>();
+		try {
+			String sql = "select * from roteiro_ponto where id_roteiro=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idRoteiro);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				
+				Integer id = rs.getInt("id_ponto");
+				
+				Ponto ponto = obterPonto(id);
+				pontos.add(ponto);
+			}
+			rs.close();
+			ps.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pontos;
+	}
 }

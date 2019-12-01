@@ -8,11 +8,12 @@
 <meta charset="ISO-8859-1">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Lista de Motoristas</title>
+<title>Lista de Pontos</title>
 </head>
 <body class="body2">
-
 	<a class="btn btn-default" href="./PontoForm">Cadastrar novo ponto</a>
+	
+
 
 
 	<div class="container body-content ">
