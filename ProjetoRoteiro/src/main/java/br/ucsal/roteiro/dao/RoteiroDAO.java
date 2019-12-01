@@ -14,6 +14,19 @@ import br.ucsal.roteiro.util.Conexao;
 public class RoteiroDAO {
 	
 	private static Connection con = Conexao.getConnection();
+	
+//	public static void main(String args[]) {
+//		List<Roteiro> roteiros = listarRoteiros();
+//		for (Roteiro roteiro : roteiros) {
+//			System.out.println(roteiro.getId());
+//			List<Ponto> pontos = roteiro.getPontos();
+//			for (Ponto ponto : pontos) {
+//				System.out.print(ponto.getId()+" " );
+//			}
+//			System.out.println();
+//		}
+//	}
+	
 	@SuppressWarnings("unused")//so pra tirar o warning
 	public static List<Roteiro> listarRoteiros() {
 		
@@ -32,10 +45,28 @@ public class RoteiroDAO {
 				String tipo = rs.getString("tipo");
 				
 				Roteiro roteiro = new Roteiro(id, codigo, descricao, tipo);
+				
+				String sqlBuscaPontos = "SELECT * FROM roteiro_ponto where id_roteiro = ?";
+				PreparedStatement psBuscaPontos = con.prepareStatement(sqlBuscaPontos);
+				psBuscaPontos.setInt(1, id);
+				ResultSet rsBuscaPontos = psBuscaPontos.executeQuery();
+				
+				List<Ponto> pontos = new ArrayList<Ponto>();
+				while(rsBuscaPontos.next()) {
+					Integer idPonto = Integer.parseInt(rsBuscaPontos.getString(3));
+					Ponto ponto = PontoDAO.obterPonto(idPonto);
+					pontos.add(ponto);
+				}
+				psBuscaPontos.close();
+				rsBuscaPontos.close();
+				roteiro.setPontos(pontos);
 				roteiros.add(roteiro);
+				
+				
 			}
 			ps.close();
 			rs.close();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

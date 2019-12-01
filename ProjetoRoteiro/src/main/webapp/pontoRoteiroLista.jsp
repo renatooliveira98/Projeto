@@ -8,10 +8,9 @@
 <meta charset="ISO-8859-1">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Lista de roteiros</title>
+<title>Lista de pontos por roteiro</title>
 </head>
 <body>
-	<a class="btn btn-default" href="./RoteiroForm">Cadastrar Roteiro</a>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -22,20 +21,17 @@
 					<table class="table">
 						<tr>
 							<th>Id</th>
-							<th>Codigo</th>
-							<th>Descrição</th>
-							<th>Tipo</th>
-							<th><a href="./RoteiroForm">Novo Roteiro</a></th>
+								<th>Descricao</th>
+								<th>Coordenada X<br>Latitude</th>
+								<th>Coordenada Y<br>Longitude</th>
 						</tr>
 
-						<c:forEach var="r" items="${roteiros}">
+						<c:forEach var="p" items="${pontos}">
 							<tr>
-								<th>${r.id}</th>
-								<th><a href='./PontoRoteiroListar?idRoteiro=${r.id}'> ${r.codigo}</a></th> 
-								<th>${r.descricao}</th>
-								<th>${r.tipo}</th>
-								<th><a href='./RoteiroForm?id=${r.id}'>Editar</a> | 
-								<a	href='./RoteiroForm?id=${r.id}'>Excluir</a></th>
+								<td>${p.id}</td>
+									<td>${p.descricao}</td>
+									<td>${p.x}</td>
+									<td>${p.y}</td>
 							</tr>
 						</c:forEach>
 					</table>
