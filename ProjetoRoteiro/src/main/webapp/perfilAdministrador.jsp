@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="body2">
 	<div align="center">
 		Perfil do Administrador
 		Bem vindo, ${usuario.email} | <a href="./Logout">Sair</a>

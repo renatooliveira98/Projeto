@@ -7,7 +7,7 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
-<body>
+<body class="body2">
 	
 	<div class="container body-content ">
 		<div class="row">

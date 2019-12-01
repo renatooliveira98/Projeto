@@ -9,7 +9,7 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Gerenciar Onibus</title>
 </head>
-<body>
+<body class="body2">
 <form action="./OnibusSalvar" method="post">
 		<input name="id" type="hidden" value="${onibus.id}">
 		Placa: <input type="text" name="placa" value="${onibus.placa}"><br>

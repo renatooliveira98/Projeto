@@ -10,7 +10,7 @@
 	rel="stylesheet" />
 <title>Lista de roteiros</title>
 </head>
-<body>
+<body class="body2">
 	<a class="btn btn-default" href="./RoteiroForm">Cadastrar Roteiro</a>
 
 	<div class="container body-content ">

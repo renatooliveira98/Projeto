@@ -8,7 +8,7 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Novo Roteiro</title>
 </head>
-<body>
+<body class="body2">
 	<form action="./RoteiroSalvar" method="get">
 		Código: <input name="codigo" type="text" id="codigo">
 		Descrição: <input name="tipo" type="text" id="tipo">

@@ -28,6 +28,7 @@ public class UsuarioDAO {
 			if(rs.next()) {
 				autenticado = true;
 				user.setId(Integer.parseInt(rs.getString(1)));
+				user.setNome(rs.getString(2));
 				Papel papel = PapelDAO.buscarPapel(Integer.parseInt(rs.getString(8)));
 				user.setPapel(papel);
 			}

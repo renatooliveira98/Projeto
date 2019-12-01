@@ -8,7 +8,7 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
-<body>
+<body class="body2">
 	<div class="perfil" ign="center">
 		Bem vindo, ${usuario.email} | <a href="./Logout">Sair</a>
 	</div>

@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="body2">
 	<form action="./ProgramacaoSalvar" method="post">
 		Código do roteiro: <select name = "roteiro">
 							<option value="">Selecione</option>
