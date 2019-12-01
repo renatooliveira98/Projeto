@@ -114,7 +114,7 @@ public class RoteiroDAO {
 				idRoteiro=rs.getInt("id");
 			}
 			r.setId(idRoteiro);
-			inserirRoteiroPonto(r);
+			RoteiroPontoDAO.inserirRoteiroPonto(r);
 			ps.close();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -122,20 +122,7 @@ public class RoteiroDAO {
 		
 	}
 	
-	public static void inserirRoteiroPonto(Roteiro roteiro) {
-		String sql="insert into roteiro_ponto (id_roteiro, id_ponto) values(?,?)";
-		try {
-			for (Ponto p : roteiro.getPontos()) {
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, roteiro.getId());
-				ps.setInt(2, p.getId());
-				ps.executeUpdate();
-				ps.close();
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	public static void excluirRoteiro(Integer idRoteiro) {
 		try {

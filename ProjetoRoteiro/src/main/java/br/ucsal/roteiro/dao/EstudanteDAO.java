@@ -7,12 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Papel;
-import br.ucsal.roteiro.model.Roteiro;
 import br.ucsal.roteiro.model.Usuario;
 import br.ucsal.roteiro.util.Conexao;
 
@@ -108,29 +106,14 @@ public class EstudanteDAO {
 				id=rs.getInt("id");
 			}
 			estudante.setId(id);
-			inserRoteiroEstudante(estudante);
+			RoteiroEstudanteDAO.inserRoteiroEstudante(estudante);
 			pstmt.close(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void inserRoteiroEstudante(Estudante estudante) {
-		String sql= "insert into roteiro_estudante (id_roteiro, id_estudante) values ( ?, ?);";
-		
-		try {
-			for (Roteiro roteiro : estudante.getRoteiros()) {
-				PreparedStatement pstmt= con.prepareStatement(sql);
-				pstmt.setInt(1, roteiro.getId());
-				pstmt.setInt(2, estudante.getId());
-				pstmt.executeUpdate();
-				pstmt.close();
-			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	public static void EditarEstudante(Estudante estudante) {
 		String sql ="update estudantes set id_curso=?, id_usuario=? where id=?";
