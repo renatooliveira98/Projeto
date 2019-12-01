@@ -147,8 +147,13 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		EstudanteDAO.EditarEstudante(usuario.getEstudante());
-		EnderecoDAO.editarEndereco(usuario.getEndereco());
+		if(usuario.getEstudante()!= null){
+			EstudanteDAO.EditarEstudante(usuario.getEstudante());
+		}
+		if(usuario.getEndereco()!= null) {
+			EnderecoDAO.editarEndereco(usuario.getEndereco());
+		}
+		
 	}
 
 	public static void deletarUsuario(Integer id) {
@@ -164,5 +169,32 @@ public class UsuarioDAO {
 		}
 		
 		EnderecoDAO.deletarEndereco(idEnd);
+	}
+	
+	public static List<Usuario> listarAdministradores() {
+		List<Usuario> administradores = new ArrayList<Usuario>();
+		Usuario usuario;
+		String sql = "select * from usuarios where id_papel=1;";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				Integer idUser= rs.getInt("id");
+				String nome= rs.getString("nome");
+				String nomeSocial = rs.getString("nome_social");
+				String email = rs.getString("email");
+				String cpf = rs.getString("cpf");
+				String senha =rs.getString("senha");
+				Integer idEndereco = rs.getInt("id_endereco");
+				Integer idPapel = rs.getInt("id_papel");
+				Papel p = PapelDAO.buscarPapel(idPapel);
+				Endereco e = EnderecoDAO.obterPonto(idEndereco);
+				usuario = new Usuario(idUser, nome, nomeSocial, email, cpf, senha, e, p);
+				administradores.add(usuario);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return administradores;
 	}
 }
