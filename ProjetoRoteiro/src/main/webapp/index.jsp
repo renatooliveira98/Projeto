@@ -12,6 +12,9 @@
 	<link rel="stylesheet" type="text/css" href="atv.css">
 </head>
 <body class="body">
+
+<a href='./ProgramacaoLista'>listar Programacoes</a>
+
 <div class="container">
 		<div class="row">
 			<div class="col-lg-3"></div>
@@ -33,6 +36,7 @@
 								<label for="senha">Senha</label><br>
 								<input type="password" class="form-control" name="senha" id="senha">
 							</div>
+							${erro}
 
 						
 					</div>

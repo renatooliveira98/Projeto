@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import br.ucsal.roteiro.model.Endereco;
 import br.ucsal.roteiro.model.Papel;
 import br.ucsal.roteiro.model.Usuario;
@@ -27,6 +28,8 @@ public class UsuarioDAO {
 			if(rs.next()) {
 				autenticado = true;
 				user.setId(Integer.parseInt(rs.getString(1)));
+				Papel papel = PapelDAO.buscarPapel(Integer.parseInt(rs.getString(8)));
+				user.setPapel(papel);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
