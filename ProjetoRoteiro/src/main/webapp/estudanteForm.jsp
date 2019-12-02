@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
-<title>Insert title here</title>
 <title>Cadastrar estudante</title>
 	<script type="text/javascript" src="roteiro.js"></script>
 	<link rel="stylesheet" type="text/css" href="atv.css">
@@ -15,7 +14,7 @@
 <body class="body2">
 	
 
-<!--  class="form-control"  -->
+
 
 	<div class="container body-content ">
 		<div class="row">
@@ -75,7 +74,7 @@
 	<div class="row">
 		<div class="form-group col-lg-6">
 		<label for="cep">CEP</label> 
-			<input class="form-control" type="text" name="cep" id="Cep" value="${estudante.usuario.endereco.cep}">
+			<input class="form-control" type="text" name="cep" id="cep" value="${estudante.usuario.endereco.cep}">
 		</div>
 		<div class="form-group col-lg-6">
 		<label for="cidade">Cidade</label> 
@@ -128,7 +127,7 @@
 	</div>
 </div>
 		
-		<button class="btn" type="submit">Enviar</button>
+		<button class="btn btnPadrao" type="submit">Enviar</button>
 		
 	</form>
 	</div>

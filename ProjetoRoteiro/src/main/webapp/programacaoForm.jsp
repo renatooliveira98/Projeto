@@ -8,35 +8,75 @@
 <title>Insert title here</title>
 </head>
 <body class="body2">
+
+<div class="container body-content ">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			
+			<div class="col-lg-10">
+				<div class="container centered" id="conteudo">
+
 	<form action="./ProgramacaoSalvar" method="post">
-		Código do roteiro: <select name = "roteiro">
-							<option value="">Selecione</option>
+	
+		<div class="row">	
+			<div class="form-group col-lg-6"> 
+				<label for="roteiro">Código do roteiro</label>
+					<select class="form-control" id = "roteiro" name = "roteiro">
+						<option value="">Selecione</option>
 							<c:forEach var="r" items="${roteiros}">
-							<option value="${r.id}">${r.codigo}
+								<option value="${r.id}">${r.codigo}
 							</option>
-							</c:forEach>
-						</select> <br>
-		Data: <input type="date" name ="dia"> <br>
-		Hora de saída: <input type="time" name="horaIda"> <br>
-		Hora de retorno: <input type="time" name="horaVolta"> <br>
-		Placa do ônibus: <select name = "onibus">
-							<option value="">Selecione</option>
-							<c:forEach var="o" items="${onibus}">
-							<option value="${o.id}">${o.placa}
-							</option>
-							</c:forEach>
-						</select> <br>
-		Nome do motorista: <select name = "motorista">
-							<option value="">Selecione</option>
-							<c:forEach var="m" items="${motoristas}">
-							<option value="${m.id}">${m.nome}
-							</option>
-							</c:forEach>
-						</select>
+						</c:forEach>
+					</select> 
+			</div>
+			<div class="form-group col-lg-6">
+				<label for="data">Data</label>
+				<input class="form-control" type="date" id="data" name ="dia">
+			</div>
+		</div>
 		
 		
-		
-		<button type="submit">Salvar</button>
+		<div class="row">	
+			<div class="form-group col-lg-6"> 		
+				<label for="horaIda">Hora de saída</label>
+				<input class="form-control" type="time" name="horaIda" if="horaIda">
+			</div>
+			<div class="form-group col-lg-6"> 	 
+				 <label for="horaVolta">Hora de retorno</label>
+				<input class="form-control" type="time" name="horaVolta" id="horaVolta">
+		 </div>
+		</div>
+		 
+		<div class="row">	
+			<div class="form-group col-lg-6"> 
+				 <label for="onibus">Placa do ônibus</label>
+				 <select class="form-control" name = "onibus" id="onibus">
+									<option value="">Selecione</option>
+									<c:forEach var="o" items="${onibus}">
+									<option value="${o.id}">${o.placa}
+									</option>
+									</c:forEach>
+								</select> 
+			</div>
+			<div class="form-group col-lg-6"> 
+				<label for="motorista">Nome do motorista</label>
+							 <select class="form-control" id = "motorista" name = "motorista">
+									<option value="">Selecione</option>
+									<c:forEach var="m" items="${motoristas}">
+									<option value="${m.id}">${m.nome}
+									</option>
+									</c:forEach>
+								</select>
+			</div>
+		</div>
+			
+		<button class="btn btnPadrao" type="submit">Salvar</button>
 	</form>
+	
+</div>
+</div>
+</div>
+</div>
+
 </body>
 </html>

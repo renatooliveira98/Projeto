@@ -10,12 +10,42 @@
 <title>Gerenciar Onibus</title>
 </head>
 <body class="body2">
-<form action="./OnibusSalvar" method="post">
+
+<div class="container body-content ">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			
+			<div class="col-lg-10">
+				<div class="container centered" id="conteudo">
+	<form action="./OnibusSalvar" method="post">
 		<input name="id" type="hidden" value="${onibus.id}">
-		Placa: <input type="text" name="placa" value="${onibus.placa}"><br>
-		Detalhes: <input type="text" name="detalhes" value="${onibus.detalhes}"><br>
-		Situação:: <input type="text" name="situacao" value="${onibus.situacao}"><br>
-		<button type="submit">Salvar</button>
+		
+		
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="placa">Placa</label>
+				<input class="form-control" type="text" id="placa" name="placa" value="${onibus.placa}">
+			</div>
+			<div class="form-group col-lg-6">
+				<label for="situecao">Situação</label>
+				<input class="form-control" type="text" id="" name="situacao" value="${onibus.situacao}">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-lg-12">
+				<label for="detalhes">Detalhes</label>
+				<input class="form-control" type="text" id="detalhes" name="detalhes" value="${onibus.detalhes}">
+			</div> 
+		</div>
+		
+		
+		<button class="btn btnPadrao" type="submit">Salvar</button>
 	</form>
+	
+	</div>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

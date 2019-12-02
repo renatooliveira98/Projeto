@@ -10,13 +10,42 @@
 <title>Cadastrar Motorista</title>
 </head>
 <body class="body2">
-<form action="./MotoristaSalvar" method="post">
+
+<div class="container body-content ">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			
+			<div class="col-lg-10">
+				<div class="container centered" id="conteudo">
+	<form action="./MotoristaSalvar" method="post">
+	
 		<input name="id" type="hidden" value="${motorista.id}"> <br>
-		Nome: <input type="text" name="nome" value="${motorista.nome}"><br>
-		Descricao: <input type="text" name="descricao" value="${motorista.descricao}"><br>
-		Situação: <input type="text" name="situacao" value="${motorista.situacao}"><br>
-		<button type="submit">Salvar</button>
+		
+		<div class="row">
+			<div class="form-group col-lg-12">
+				<label for="nome">Nome</label>
+				<input class="form-control" type="text" id="nome" name="nome" value="${motorista.nome}">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="descricao">Descrição</label>
+				<input class="form-control" type="text" id="descricao" name="descricao" value="${motorista.descricao}">
+			</div>
+			<div class="form-group col-lg-6">
+				<label for="situacao">Situação</label>
+				<input class="form-control" type="text" id="situacao" name="situacao" value="${motorista.situacao}">
+			</div>
+		</div>
+		
+		<button class="btn btnPadrao" type="submit">Salvar</button>
 	</form>
+	
+	</div>
+	</div>
+	</div>
+	</div>
 
 </body>
 </html>
