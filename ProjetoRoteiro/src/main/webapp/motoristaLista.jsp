@@ -12,7 +12,7 @@
 </head>
 <body class="body2">
 
-	<a class="btn btn-default" href="./MotoristaForm">Novo Motorista</a>
+	
 
 
 	<div class="container body-content ">
@@ -21,6 +21,7 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+				<a class="btn btn-default" href="./MotoristaForm">Novo Motorista</a>
 					<table class="table">
 						<thead>
 							<tr>
@@ -28,7 +29,7 @@
 								<th>Nome</th>
 								<th>Descricao</th>
 								<th>Situacao</th>
-								<th></th>
+								<!-- <th></th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -38,8 +39,8 @@
 									<td>${m.nome}</td>
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
-									<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> |
-									 <a	href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
+									<!--  <td><a href='./MotoristaForm?id=${m.id}'>Editar</a> |
+									 <a	href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>-->
 								</tr>
 							</c:forEach>
 						</tbody>

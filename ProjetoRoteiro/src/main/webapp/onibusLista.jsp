@@ -12,7 +12,7 @@
 </head>
 <body class="body2">
 
-	<a class="btn btn-default" href="./OnibusForm">Novo Onibus</a>
+	
 
 
 	<div class="container body-content ">
@@ -21,6 +21,8 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+				
+				<a  href="./OnibusForm">Novo Onibus</a>
 					<table class="table">
 						<thead>
 							<tr>
@@ -28,7 +30,7 @@
 								<th>Placa</th>
 								<th>Detalhes</th>
 								<th>Situacao</th>
-								<th></th>
+								<!-- <th><a  href="./OnibusForm">Novo Onibus</a></th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -38,8 +40,8 @@
 									<td>${o.placa}</td>
 									<td>${o.detalhes}</td>
 									<td>${o.situacao}</td>
-									<td><a href='./OnibusForm?id=${o.id}'>Editar</a> | 
-									<a href='./OnibusExcluir?id=${o.id}'>Excluir</a></td>
+									<!-- <td><a href='./OnibusForm?id=${o.id}'>Editar</a> | 
+									<a href='./OnibusExcluir?id=${o.id}'>Excluir</a></td> -->
 								</tr>
 							</c:forEach>
 						</tbody>

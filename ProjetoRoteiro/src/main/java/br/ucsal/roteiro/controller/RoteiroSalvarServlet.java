@@ -34,6 +34,7 @@ public class RoteiroSalvarServlet extends HttpServlet {
 		String codigo = request.getParameter("codigo");
 		String descricao = request.getParameter("descricao");
 		String tipo = request.getParameter("tipo");
+	
 		
 		List<Ponto> pontos = new ArrayList<Ponto>();
 		for (String idPonto : idsPonto) {
@@ -45,6 +46,7 @@ public class RoteiroSalvarServlet extends HttpServlet {
 			roteiro.setCodigo(codigo);
 			roteiro.setDescricao(descricao);
 			roteiro.setTipo(tipo);
+			RoteiroDAO.editarRoteiro(roteiro);
 		}else {
 			roteiro.setCodigo(codigo);
 			roteiro.setDescricao(descricao);

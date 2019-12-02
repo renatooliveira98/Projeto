@@ -11,7 +11,6 @@
 <title>Lista de Pontos</title>
 </head>
 <body class="body2">
-	<a class="btn btn-default" href="./PontoForm">Cadastrar novo ponto</a>
 	
 
 
@@ -29,7 +28,7 @@
 								<th>Descricao</th>
 								<th>Coordenada X<br>Latitude</th>
 								<th>Coordenada Y<br>Longitude</th>
-								<th></th>
+								<th><a href="./PontoForm">Novo ponto</a></th>
 							</tr>
 						</thead>
 						<tbody>

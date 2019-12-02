@@ -19,7 +19,8 @@ public class RoteiroExcluirServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer id = Integer.parseInt("id");
+		String sId = request.getParameter("id");
+		Integer id = Integer.parseInt(sId);
 		RoteiroDAO.excluirRoteiro(id);
 		response.sendRedirect("./RoteiroLista");
 	}
