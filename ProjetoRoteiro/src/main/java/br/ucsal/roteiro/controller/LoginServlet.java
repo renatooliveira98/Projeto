@@ -26,14 +26,14 @@ public class LoginServlet extends HttpServlet {
 		usuario.setSenha(senha);
 		
 		Usuario usuarioLogado = UsuarioDAO.autenticarUsuario(usuario);
-		System.out.println(usuario.getPapel().getId());
+	
 		if(usuarioLogado != null) {
 			request.getSession().setAttribute("usuario", usuario);
 			if(usuario.getPapel().getId()==2) //adm
 				response.sendRedirect("./PerfilEstudante");
 			if(usuario.getPapel().getId()==1) {
 				response.sendRedirect("./PerfilAdministrador");
-				System.out.println("entrou");
+				
 			}
 		}else {
 			request.setAttribute("erro", "E-mail ou senha inválido!");

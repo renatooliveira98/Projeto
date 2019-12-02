@@ -70,7 +70,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		Estudante estudante= null;
 
 		if( idUserS!= null && !idUserS.trim().isEmpty()) {
-			System.out.println("edit");
+			
 			estudante= EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idUserS));
 			Endereco endereco = EnderecoDAO.buscarEndereco(estudante.getUsuario().getEndereco().getId());
 			endereco.setBairro(bairro);

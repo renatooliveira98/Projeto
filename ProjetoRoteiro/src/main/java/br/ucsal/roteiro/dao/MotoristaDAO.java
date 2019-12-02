@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ucsal.roteiro.model.Curso;
 import br.ucsal.roteiro.model.Motorista;
 import br.ucsal.roteiro.util.Conexao;
 
