@@ -10,13 +10,42 @@
 <title>Cadastrar Motorista</title>
 </head>
 <body class="body2">
+
+<div class="container body-content ">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			
+			<div class="col-lg-10">
+				<div class="container centered" id="conteudo">
+				
 <form action="./PontoSalvar" method="post">
-		<input name="id" type="hidden" value="${ponto.id}"> <br>
-		Descrição: <input type="text" name="descricao" value="${ponto.descricao}"><br>
-		Coordenada X: <input type="text" name="x" value="${ponto.x}"><br>
-		Coordenada Y: <input type="text" name="y" value="${ponto.y}"><br>
-		<button type="submit">Salvar</button>
+		<input name="id" type="hidden" value="${ponto.id}"> 
+		
+		<div class="row">
+			<div class="form-group col-lg-12">		
+				<label for="descricao">Descrição</label>
+		 		<input class="form-control" type="text" id="descricao" name="descricao" value="${ponto.descricao}">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="x">Coordenada X</label>
+				<input class="form-control" type="text" id="x" name="x" value="${ponto.x}">
+			</div>
+			<div class="form-group col-lg-6">
+				<label for="y">Coordenada Y</label>
+				<input class="form-control" type="text" id="y" name="y" value="${ponto.y}">
+			</div>
+		</div>
+		
+		
+		<button class="btn btnPadrao" type="submit">Salvar</button>
 	</form>
 
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

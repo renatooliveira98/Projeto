@@ -8,17 +8,59 @@
 <title>Insert title here</title>
 </head>
 <body class="body2">
+
+<div class="container body-content ">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			
+			<div class="col-lg-10">
+				<div class="container centered" id="conteudo">
+
 	<form method="post" action="./InstituicaoSalvar">
 		<input type="hidden" name="id" value="${instituicao.id}">
-		<input type="text" name="nome" placeholder="Nome da Instituição" value="${instituicao.nome}">
+		
+		<div class="row">
+			<div class="form-group col-lg-12">
+				<label for="nomeInstituicao">Nome da Instituição</label>
+				<input type="text" name="nome" class="form-control" value="${instituicao.nome}">
+			</div>
+		</div>
+		
 		<hr>
 		<label>Endereço</label><br>
-		<input type="text" name="cep" placeholder="Cep" value="${instituicao.endereco.cep}">
-		<input type="text" name="cidade" placeholder="Cidade" value="${instituicao.endereco.cidade}">
-		<input type="text" name="bairro" placeholder="Bairro" value="${instituicao.endereco.bairro}">
-		<input type="text" name="rua" placeholder="Rua" value="${instituicao.endereco.rua}">
-		<input type="text" name="numero" placeholder="Numero" value="${instituicao.endereco.numero}">
-		<button type="submit">Enviar</button>
+		
+		<div class="row">
+			<div class="form-group col-lg-6">
+				<label for="cep">CEP</label>
+				<input type="text" name="cep" class="form-control" id="cep" value="${instituicao.endereco.cep}">
+			</div>
+			<div class="form-group col-lg-6">
+				<label for="cidade">Cidade</label>
+				<input type="text" name="cidade" class="form-control" id="cidade" value="${instituicao.endereco.cidade}">
+			</div>
+		</div>
+		
+		
+		<div class="row">
+			<div class="form-group col-lg-4">
+				<label for="bairro">Bairro</label>
+				<input type="text" id="bairro" name="bairro" class="form-control" value="${instituicao.endereco.bairro}">
+			</div>
+			<div class="form-group col-lg-4">
+				<label for="rua">Rua</label>
+				<input type="text" id="rua" name="rua" class="form-control" value="${instituicao.endereco.rua}">
+			</div>
+			<div class="form-group col-lg-4">
+				<label for="numero">Instituição</label>
+				<input type="text" id="numero" name="numero" class="form-control" value="${instituicao.endereco.numero}">
+			</div>
+		</div>
+		<button class="btn btnPadrao" type="submit">Enviar</button>
 	</form>
+	
+	</div>
+	</div>
+	</div>
+	</div>
 </body>
 </html>
