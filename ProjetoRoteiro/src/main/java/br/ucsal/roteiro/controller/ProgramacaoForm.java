@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.roteiro.dao.MotoristaDAO;
 import br.ucsal.roteiro.dao.OnibusDAO;
-import br.ucsal.roteiro.dao.PontoDAO;
 import br.ucsal.roteiro.dao.ProgramacaoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.model.Motorista;

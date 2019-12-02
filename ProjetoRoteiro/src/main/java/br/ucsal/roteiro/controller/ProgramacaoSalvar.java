@@ -72,7 +72,7 @@ public class ProgramacaoSalvar extends HttpServlet {
 		
 		ProgramacaoDAO.inserirProgramacao(programacao);
 		
-		response.sendRedirect("./ProgramacaoLista");
+		response.sendRedirect("./ProgramacaoListar");
 		
 		
 		

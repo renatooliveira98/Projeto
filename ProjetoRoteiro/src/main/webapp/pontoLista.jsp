@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Pontos</title>
@@ -28,7 +28,8 @@
 								<th>Descricao</th>
 								<th>Coordenada X<br>Latitude</th>
 								<th>Coordenada Y<br>Longitude</th>
-								<th><a href="./PontoForm">Novo ponto</a></th>
+								<th><a href="./PontoForm">Novo ponto</a>  </th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -38,8 +39,10 @@
 									<td>${p.descricao}</td>
 									<td>${p.x}</td>
 									<td>${p.y}</td>
-									<td><a href='./PontoForm?id=${p.id}'>Editar</a> |
-									 <a	href='./PontoExcluir?id=${p.id}'>Excluir</a></td>
+									<c:if test="${idRoteiro == null}">
+										<td><a href='./PontoForm?id=${p.id}'>Editar</a> |
+									 	<a	href='./PontoExcluir?id=${p.id}'>Excluir</a></td>
+									 </c:if>
 								</tr>
 							</c:forEach>
 						</tbody>

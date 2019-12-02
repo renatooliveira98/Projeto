@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Motoristas</title>
@@ -39,8 +39,10 @@
 									<td>${m.nome}</td>
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
-									<!--  <td><a href='./MotoristaForm?id=${m.id}'>Editar</a> |
-									 <a	href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>-->
+									<c:if test="${usuario.papel.id == 2}">
+									  <td><a href='./MotoristaForm?id=${m.id}'>Editar</a> |
+									 <a	href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
+									 </c:if>
 								</tr>
 							</c:forEach>
 						</tbody>

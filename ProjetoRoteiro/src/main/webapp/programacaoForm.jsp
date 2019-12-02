@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body class="body2">
 	<form action="./ProgramacaoSalvar" method="post">
-		Código do roteiro: <select name = "roteiro">
+		CÃ³digo do roteiro: <select name = "roteiro">
 							<option value="">Selecione</option>
 							<c:forEach var="r" items="${roteiros}">
 							<option value="${r.id}">${r.codigo}
@@ -17,9 +17,9 @@
 							</c:forEach>
 						</select> <br>
 		Data: <input type="date" name ="dia"> <br>
-		Hora de saída: <input type="time" name="horaIda"> <br>
+		Hora de saÃ­da: <input type="time" name="horaIda"> <br>
 		Hora de retorno: <input type="time" name="horaVolta"> <br>
-		Placa do ônibus: <select name = "onibus">
+		Placa do Ã´nibus: <select name = "onibus">
 							<option value="">Selecione</option>
 							<c:forEach var="o" items="${onibus}">
 							<option value="${o.id}">${o.placa}

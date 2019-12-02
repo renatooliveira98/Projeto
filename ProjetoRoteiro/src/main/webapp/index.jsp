@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Login</title>
 
 	 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
@@ -60,8 +60,8 @@
 				<div class="row centered">
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6 centered">
-						<p class="texto">Transporte Universitário</p>
-						<p class="texto">2019 © - Qualquer coisa</p>
+						<p class="texto">Transporte UniversitÃ¡rio</p>
+						<p class="texto">2019 Â© - Qualquer coisa</p>
 					</div>
 					<div class="col-lg-3"></div>			
 				</div>	

@@ -25,9 +25,9 @@ public class LoginServlet extends HttpServlet {
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		
-		usuario = UsuarioDAO.autenticarUsuario(usuario);
+		Usuario usuarioLogado = UsuarioDAO.autenticarUsuario(usuario);
 		System.out.println(usuario.getPapel().getId());
-		if(usuario != null) {
+		if(usuarioLogado != null) {
 			request.getSession().setAttribute("usuario", usuario);
 			if(usuario.getPapel().getId()==2) //adm
 				response.sendRedirect("./PerfilEstudante");

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Pontos</title>
@@ -31,7 +31,7 @@
 								<th>Hora Volta</th>
 								<th>Onibus</th>
 								<th>Motorista</th>
-								<th><a href="./ProgramacaoForm">Nova Programação</a></th>
+								<th><a href="./ProgramacaoForm">Nova ProgramaÃ§Ã£o</a></th>
 							</tr>
 						</thead>
 						<tbody>

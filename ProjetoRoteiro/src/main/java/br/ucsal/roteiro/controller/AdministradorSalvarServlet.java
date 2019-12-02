@@ -7,12 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.CursoDAO;
 import br.ucsal.roteiro.dao.EnderecoDAO;
 import br.ucsal.roteiro.dao.PapelDAO;
 import br.ucsal.roteiro.dao.UsuarioDAO;
 import br.ucsal.roteiro.model.Endereco;
-import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Papel;
 import br.ucsal.roteiro.model.Usuario;
 

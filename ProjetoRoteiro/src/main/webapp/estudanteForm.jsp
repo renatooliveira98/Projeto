@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
@@ -71,7 +71,7 @@
 	
 	<hr>
 	
-	<label>Endereço</label><br>
+	<label>EndereÃ§o</label><br>
 	<div class="row">
 		<div class="form-group col-lg-6">
 		<label for="cep">CEP</label> 
@@ -120,7 +120,7 @@
 		<div class="ms-lista">
 			<ul id="salvar" class="list-group list-group-flush">
 				<c:forEach var="rc" items="${roteirosCadastrados}">
-					<li class="list-group-item" name="roteirosSelecionados" value="${rc.id}"> ${rc.codigo} 
+					<li class="list-group-item"  value="${rc.id}"> ${rc.codigo} 
 					<input type='checkbox' name='chkTags' id='chkTags' class='chkTags' checked='checked' value="${rc.id}"></li>
 				</c:forEach>
 			</ul>

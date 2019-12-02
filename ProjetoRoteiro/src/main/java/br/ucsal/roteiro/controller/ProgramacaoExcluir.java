@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.PontoDAO;
 import br.ucsal.roteiro.dao.ProgramacaoDAO;
 
 /**
@@ -32,7 +31,7 @@ public class ProgramacaoExcluir extends HttpServlet {
 		String sId = request.getParameter("id");
 		int id = Integer.parseInt(sId);
 		ProgramacaoDAO.removerProgramacao(id);
-		response.sendRedirect("./ProgramacaoLista");
+		response.sendRedirect("./ProgramacaoListar");
 	}
 
 

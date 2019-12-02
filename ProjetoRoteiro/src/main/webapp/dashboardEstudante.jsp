@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="atv.css">
 <title>Insert title here</title>
@@ -29,20 +29,20 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active itensNavbar">
-					<a class="nav-link " href="./Perfil">INÍCIO<span class="sr-only">(current)</span></a>
+					<a class="nav-link " href="./Perfil">INÃCIO<span class="sr-only">(current)</span></a>
 				</li>
 
 				<li class="nav-item dropdown itensNavbar">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						SERVIÇOS
+						SERVIÃ‡OS
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="./EstudanteListar">ESTUDANTES</a>
-						<a class="dropdown-item" href="./InstituicaoListar">INSTITUIÇÕES</a>
-						<a class="dropdown-item" href="./RoteiroLista">ROTEIROS</a>
+						<a class="dropdown-item" href="./InstituicaoListar">INSTITUIÃ‡Ã•ES</a>
+						<a class="dropdown-item" href="./RoteiroListar">ROTEIROS</a>
 						<a class="dropdown-item" href="./PontoListar">PONTOS</a>
-						<a class="dropdown-item" href="./CursoLista">CURSOS</a>
-						<a class="dropdown-item" href="./OnibusLista">VEÍCULOS</a>
+						<a class="dropdown-item" href="./CursoListar">CURSOS</a>
+						<a class="dropdown-item" href="./OnibusListar">VEÃCULOS</a>
 					</div>
 				</li>
 
@@ -51,18 +51,18 @@
 						FUNCIONARIOS
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="./MotoristaLista">MOTORISTAS</a>
+						<a class="dropdown-item" href="./MotoristaListar">MOTORISTAS</a>
 						<a class="dropdown-item" href="./AdministradorListar">ADMINISTRADORES</a>
 					</div>
 				</li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						NOTIFICAÇÕES
+						NOTIFICAÃ‡Ã•ES
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">OPÇÃO 1</a>
-						<a class="dropdown-item" href="#">OPÇÃO 2</a>
+						<a class="dropdown-item" href="#">OPÃ‡ÃƒO 1</a>
+						<a class="dropdown-item" href="#">OPÃ‡ÃƒO 2</a>
 					</div>
 				</li>
 				
@@ -78,7 +78,7 @@
 				<div class="container centered" id="conteudo">
 					<div class="row centered">
 						<h4 class="titulo">PERFIL</h4>
-						<h1>Olá ${usuario.nome}</h1>
+						<h1>OlÃ¡ ${usuario.nome}</h1>
 					</div>
 					<hr>
 					<div class="row">
@@ -99,7 +99,7 @@
 
    
             <footer class="footer">
-                <p class="labelFooter">&copy; 2019 Região Metropolitana LTDA.</p>
+                <p class="labelFooter">&copy; 2019 RegiÃ£o Metropolitana LTDA.</p>
             </footer>
 
 

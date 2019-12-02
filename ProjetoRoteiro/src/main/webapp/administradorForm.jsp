@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
@@ -51,7 +51,7 @@
 	
 	<hr>
 	
-	<label>Endereço</label><br>
+	<label>EndereÃ§o</label><br>
 	<div class="row">
 		<div class="form-group col-lg-6">
 		<label for="cep">CEP</label> 

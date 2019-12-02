@@ -22,7 +22,7 @@ public class RoteiroExcluirServlet extends HttpServlet {
 		String sId = request.getParameter("id");
 		Integer id = Integer.parseInt(sId);
 		RoteiroDAO.excluirRoteiro(id);
-		response.sendRedirect("./RoteiroLista");
+		response.sendRedirect("./RoteiroListar");
 	}
 
 

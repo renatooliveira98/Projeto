@@ -53,7 +53,7 @@ public class RoteiroSalvarServlet extends HttpServlet {
 			roteiro.setTipo(tipo);
 			RoteiroDAO.inserirRoteiro(roteiro);
 		}
-		response.sendRedirect("RoteiroLista");
+		response.sendRedirect("RoteiroListar");
 	}
 
 

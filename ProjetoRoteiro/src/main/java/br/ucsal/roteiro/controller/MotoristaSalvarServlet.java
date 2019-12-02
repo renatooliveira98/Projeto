@@ -51,7 +51,7 @@ public class MotoristaSalvarServlet extends HttpServlet {
 			MotoristaDAO.inserirMotorista(motorista);
 		}
 		
-		response.sendRedirect("./MotoristaLista");
+		response.sendRedirect("./MotoristaListar");
 	}
 
 	

@@ -1,7 +1,6 @@
 package br.ucsal.roteiro.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +13,6 @@ import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.InstituicaoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.dao.RoteiroEstudanteDAO;
-import br.ucsal.roteiro.dao.UsuarioDAO;
-import br.ucsal.roteiro.model.Roteiro;
-import br.ucsal.roteiro.model.Usuario;
 
 
 @WebServlet("/EstudanteForm")
@@ -33,7 +29,6 @@ public class EstudanteFormServlet extends HttpServlet {
 		String idS= request.getParameter("id");
 		if(idS!= null && !idS.trim().isEmpty()) {
 			Integer id=Integer.parseInt(idS);
-			List<Roteiro> roteiros=RoteiroEstudanteDAO.buscarRoteiroDoEstudante(id);
 			request.setAttribute("roteirosCadastrados", RoteiroEstudanteDAO.buscarRoteiroDoEstudante(id));
 			request.setAttribute("estudante", EstudanteDAO.buscarEstudantePeloUsuario(id));		
 		}

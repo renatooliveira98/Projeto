@@ -32,6 +32,9 @@ public class PontoListar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Ponto> pontos = PontoDAO.listarPontos();
+		String sId = request.getParameter("idRoteiro");
+		//int id = Integer.parseInt(sId);
+		request.setAttribute("idRoteiro", sId);
 		request.setAttribute("pontos", pontos);
 		request.getRequestDispatcher("pontoLista.jsp").forward(request, response);
 	}

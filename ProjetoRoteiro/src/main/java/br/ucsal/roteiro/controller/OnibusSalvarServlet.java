@@ -51,7 +51,7 @@ public class OnibusSalvarServlet extends HttpServlet {
 			OnibusDAO.inserirOnibus(onibus);
 		}
 		
-		response.sendRedirect("./OnibusLista");
+		response.sendRedirect("./OnibusListar");
 		
 	}
 

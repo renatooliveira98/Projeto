@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Gerenciar Cursos</title>
 <link rel="stylesheet" type="text/css" href="atv.css">
@@ -31,21 +31,21 @@
 		
 		
 		<div class="form-group col-lg-6"> 
-		<label for="duracao">Duração</label> 
+		<label for="duracao">DuraÃ§Ã£o</label> 
 		<input class="form-control"  type="text" id="duracao" name="duracao" value="${curso.duracao}">
 		
 		</div>
 		</div>
 		
 		<div class="form-group col-lg-12"> 
-		<label for="instituicao">Instituição</label> 
+		<label for="instituicao">InstituiÃ§Ã£o</label> 
 		<select class="form-control" name="instituicao" id="instituicao">
 						<option value="">Selecione</option>
 							<c:forEach var="instituicao" items="${instituicoes}">
 							<option value="${instituicao.id}"
 							${ instituicao.id == curso.instituicao.id ? 'selected' : ''}>${instituicao.nome}
+							</option>
 							</c:forEach>
-						</option>
 		</select> 
 		</div>
 		<button class="btn btnPadrao" type="submit">Salvar</button>

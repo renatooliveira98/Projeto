@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.InstituicaoDAO;
 
 /**
@@ -30,7 +29,7 @@ public class InstituicaoListarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
-		request.getRequestDispatcher("instituicaoListar.jsp").forward(request, response);
+		request.getRequestDispatcher("instituicaoLista.jsp").forward(request, response);
 		
 	}
 

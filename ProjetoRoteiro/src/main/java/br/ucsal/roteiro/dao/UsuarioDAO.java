@@ -26,6 +26,7 @@ public class UsuarioDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()) {
+				//TODO: colocar todas as informações do usuario
 				autenticado = true;
 				user.setId(Integer.parseInt(rs.getString(1)));
 				user.setNome(rs.getString(2));

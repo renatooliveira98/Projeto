@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.ProgramacaoDAO;
-import br.ucsal.roteiro.model.Programacao;
+import br.ucsal.roteiro.dao.CursoDAO;
+import br.ucsal.roteiro.model.Curso;
 
 /**
- * Servlet implementation class ProgramacaoLista
+ * Servlet implementation class CursoListaServlet
  */
-@WebServlet("/ProgramacaoLista")
-public class ProgramacaoLista extends HttpServlet {
+@WebServlet("/CursoListar")
+public class CursoListarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProgramacaoLista() {
+    public CursoListarServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,9 +31,9 @@ public class ProgramacaoLista extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Programacao> programacoes = ProgramacaoDAO.listarProgramacoes();
-		request.setAttribute("programacoes", programacoes);
-		request.getRequestDispatcher("programacaoLista.jsp").forward(request, response);
+		List<Curso> cursos = CursoDAO.listarCursos();
+		request.setAttribute("cursos", cursos);
+		request.getRequestDispatcher("cursoLista.jsp").forward(request, response);
 	}
 
 }

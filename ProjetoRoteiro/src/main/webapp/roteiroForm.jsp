@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>Editar Roteiro</title>
 <!-- Latest compiled and minified CSS -->
@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#listaPontos").on("click","li",function() {
-				//Váriavel para checar se já existe na lista
+				//VÃ¡riavel para checar se jÃ¡ existe na lista
 				var chkRptTag = false;
 				var atv = $(this).text();
 					$('#lstTag li').each(function() {
@@ -59,7 +59,7 @@
 	<form action="./RoteiroSalvar" method="get">
 		<input name="id" type="hidden" value="${roteiro.id}">
 		Codigo: <input name="codigo" type="text" value="${roteiro.codigo}">
-		Descrição: <input name="descricao" type="text" value="${roteiro.descricao}">
+		DescriÃ§Ã£o: <input name="descricao" type="text" value="${roteiro.descricao}">
 		Tipo <input name="tipo" type="text" value="${roteiro.tipo}">
 		
 		<div class="row">

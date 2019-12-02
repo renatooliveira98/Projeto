@@ -52,7 +52,7 @@ public class CursoSalvarServlet extends HttpServlet {
 			CursoDAO.inserirCurso(curso);
 		}
 		
-		response.sendRedirect("./CursoLista");
+		response.sendRedirect("./CursoListar");
 		
 	}
 

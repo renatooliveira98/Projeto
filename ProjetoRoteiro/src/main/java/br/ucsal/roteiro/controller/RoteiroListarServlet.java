@@ -18,10 +18,10 @@ import br.ucsal.roteiro.model.Roteiro;
  * Servlet implementation class RoteiroListaServlet
  */
 @WebServlet("/RoteiroLista")
-public class RoteiroListaServlet extends HttpServlet {
+public class RoteiroListarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public RoteiroListaServlet() {
+    public RoteiroListarServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

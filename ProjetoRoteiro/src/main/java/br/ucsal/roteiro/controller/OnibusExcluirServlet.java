@@ -30,7 +30,7 @@ public class OnibusExcluirServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		OnibusDAO.removerOnibus(id);
-		response.sendRedirect("./OnibusLista");
+		response.sendRedirect("./OnibusListar");
 	}
 
 	

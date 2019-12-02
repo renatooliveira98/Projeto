@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucsal.roteiro.dao.EnderecoDAO;
 import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.UsuarioDAO;
 
