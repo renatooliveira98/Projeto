@@ -37,7 +37,19 @@ public class InstituicaoSalvarServlet extends HttpServlet {
 		String numero=request.getParameter("numero");
 
 		Instituicao instituicao = null;
-		if(idS==null || idS.trim().isEmpty()) {
+		if(idS!= null && !idS.trim().isEmpty()) {
+
+			instituicao= InstituicaoDAO.buscarInstituicao(Integer.parseInt(idS));
+			Endereco endereco = EnderecoDAO.buscarEndereco(instituicao.getEndereco().getId());
+			endereco.setBairro(bairro);
+			endereco.setCep(cep);
+			endereco.setCidade(cidade);
+			endereco.setRua(rua);
+			endereco.setNumero(numero);
+			instituicao.setNome(nome);
+			instituicao.setEndereco(endereco);	
+			InstituicaoDAO.EditarInstituicao(instituicao);
+		}else {
 			Endereco endereco = new Endereco();
 			endereco.setBairro(bairro);
 			endereco.setCep(cep);
@@ -51,17 +63,6 @@ public class InstituicaoSalvarServlet extends HttpServlet {
 			endereco.setInstituicao(instituicao);
 
 			EnderecoDAO.inserirEndereco(endereco);
-		}else {
-			instituicao= InstituicaoDAO.buscarInstituicao(Integer.parseInt(idS));
-			Endereco endereco = EnderecoDAO.buscarEndereco(instituicao.getEndereco().getId());
-			endereco.setBairro(bairro);
-			endereco.setCep(cep);
-			endereco.setCidade(cidade);
-			endereco.setRua(rua);
-			endereco.setNumero(numero);
-			instituicao.setNome(nome);
-			instituicao.setEndereco(endereco);	
-			InstituicaoDAO.EditarInstituicao(instituicao);
 		}
 
 		request.getRequestDispatcher("InstituicaoListar").forward(request, response);

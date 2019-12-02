@@ -44,7 +44,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idUserS= request.getParameter("id");
 
-		String[] r= request.getParameterValues("roteirosSelecionados");
+		String[] salvar= request.getParameterValues("roteirosSelecionados");
 
 		String nome = request.getParameter("nome");
 		String nomeSocial = request.getParameter("nomeSocial");
@@ -60,34 +60,17 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		String numero=request.getParameter("numero");
 
 		List<Roteiro> roteiros= new ArrayList<>();
-		if(r!= null ) {
-			for (String idRoteiro : r) {
+		
+		if(salvar!= null ) {
+			for (String idRoteiro : salvar) {
 				roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
 			}
 		}
 		Papel p=PapelDAO.buscarPapel(2);
 		Estudante estudante= null;
-		if(idUserS== null) {
-			
-			Endereco endereco = new Endereco();
-			endereco.setBairro(bairro);
-			endereco.setCep(cep);
-			endereco.setCidade(cidade);
-			endereco.setRua(rua);
-			endereco.setNumero(numero);
 
-			estudante = new Estudante();
-			estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
-			estudante.setRoteiros(roteiros);
-
-
-			Usuario usuario = new Usuario(null, nome, nomeSocial, email, cpf, senha, endereco, p);
-			//estudante.setUsuario(usuario); //apagar depois
-			usuario.setEstudante(estudante);
-			endereco.setUsuario(usuario);
-			EnderecoDAO.inserirEndereco(endereco);
-		}else {
-			
+		if( idUserS!= null && !idUserS.trim().isEmpty()) {
+			System.out.println("edit");
 			estudante= EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idUserS));
 			Endereco endereco = EnderecoDAO.buscarEndereco(estudante.getUsuario().getEndereco().getId());
 			endereco.setBairro(bairro);
@@ -108,6 +91,24 @@ public class EstudanteSalvarServlet extends HttpServlet {
 			usuario.setEndereco(endereco);
 			usuario.setEstudante(estudante);
 			UsuarioDAO.EditarUsuario(usuario);
+		}else {
+			Endereco endereco = new Endereco();
+			endereco.setBairro(bairro);
+			endereco.setCep(cep);
+			endereco.setCidade(cidade);
+			endereco.setRua(rua);
+			endereco.setNumero(numero);
+
+			estudante = new Estudante();
+			estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
+			estudante.setRoteiros(roteiros);
+
+
+			Usuario usuario = new Usuario(null, nome, nomeSocial, email, cpf, senha, endereco, p);
+			estudante.setUsuario(usuario); 
+			usuario.setEstudante(estudante);
+			endereco.setUsuario(usuario);
+			EnderecoDAO.inserirEndereco(endereco);
 		}
 
 		response.sendRedirect("./EstudanteListar");

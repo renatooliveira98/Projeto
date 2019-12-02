@@ -2,6 +2,9 @@ package br.ucsal.roteiro.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Roteiro;
@@ -25,5 +28,22 @@ public class RoteiroEstudanteDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static List<Roteiro> buscarRoteiroDoEstudante(Integer idEstudante) {
+		List<Roteiro> roteiros = new ArrayList<Roteiro>();
+		String sql="select * from roteiro_estudante where id_estudante=?";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, idEstudante);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Integer idRoteiro = rs.getInt("id_roteiro");		
+				roteiros.add(RoteiroDAO.obterRoteiro(idRoteiro));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return roteiros;
 	}
 }
