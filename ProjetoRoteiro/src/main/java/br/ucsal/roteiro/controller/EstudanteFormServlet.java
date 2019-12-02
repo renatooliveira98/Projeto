@@ -1,6 +1,8 @@
 package br.ucsal.roteiro.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,9 @@ import br.ucsal.roteiro.dao.CursoDAO;
 import br.ucsal.roteiro.dao.EstudanteDAO;
 import br.ucsal.roteiro.dao.InstituicaoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
+import br.ucsal.roteiro.dao.RoteiroEstudanteDAO;
 import br.ucsal.roteiro.dao.UsuarioDAO;
+import br.ucsal.roteiro.model.Roteiro;
 import br.ucsal.roteiro.model.Usuario;
 
 
@@ -27,10 +31,17 @@ public class EstudanteFormServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idS= request.getParameter("id");
+		if(idS!= null && !idS.trim().isEmpty()) {
+			Integer id=Integer.parseInt(idS);
+			List<Roteiro> roteiros=RoteiroEstudanteDAO.buscarRoteiroDoEstudante(id);
+			request.setAttribute("roteirosCadastrados", RoteiroEstudanteDAO.buscarRoteiroDoEstudante(id));
+			request.setAttribute("estudante", EstudanteDAO.buscarEstudantePeloUsuario(id));		
+		}
 		request.setAttribute("roteiros", RoteiroDAO.listarRoteiros());
+		
 		request.setAttribute("instituicoes", InstituicaoDAO.listarInstituicoes());
 		request.setAttribute("cursos", CursoDAO.listarCursos());
-		request.setAttribute("estudante", EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idS)));		
+				
 		request.getRequestDispatcher("estudanteForm.jsp").forward(request, response);
 	}
 	
