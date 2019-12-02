@@ -1,8 +1,6 @@
 package br.ucsal.roteiro.controller;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.roteiro.dao.MotoristaDAO;
 import br.ucsal.roteiro.dao.OnibusDAO;
+import br.ucsal.roteiro.dao.PontoDAO;
+import br.ucsal.roteiro.dao.ProgramacaoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.model.Motorista;
 import br.ucsal.roteiro.model.Onibus;
+import br.ucsal.roteiro.model.Programacao;
 import br.ucsal.roteiro.model.Roteiro;
 
 
@@ -43,7 +44,13 @@ public class ProgramacaoForm extends HttpServlet {
 		List<Onibus> onibus = OnibusDAO.listarOnibus();
 		List<Motorista> motoristas = MotoristaDAO.listarMotoristas();
 		
+		String sId = request.getParameter("id");
+		Programacao programacao = null;
 		
+		if(sId!=null) {
+			programacao = ProgramacaoDAO.buscarProgramacao(Integer.parseInt(sId));
+		}
+		request.setAttribute("programacao", programacao);
 		request.setAttribute("motoristas", motoristas);
 		request.setAttribute("onibus", onibus);
 		request.setAttribute("roteiros", roteiros);
