@@ -38,7 +38,7 @@ public class PontoForm extends HttpServlet {
 		}
 		
 		request.setAttribute("ponto", ponto);
-		request.getRequestDispatcher("pontoForm.jsp");
+		request.getRequestDispatcher("pontoForm.jsp").forward(request, response);;
 	}
 
 	

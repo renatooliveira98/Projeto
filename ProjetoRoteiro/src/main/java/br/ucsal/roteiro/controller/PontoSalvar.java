@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.roteiro.dao.PontoDAO;
-import br.ucsal.roteiro.dao.RoteiroDAO;
 import br.ucsal.roteiro.model.Ponto;
 
 /**
@@ -32,14 +31,17 @@ public class PontoSalvar extends HttpServlet {
 		String sId = request.getParameter("id");
 		String descricao = request.getParameter("descricao");
 		String sX = request.getParameter("x");
-		String sY = request.getParameter("Y");
+		String sY = request.getParameter("y");
 		long x = Long.parseLong(sX);
 		long y = Long.parseLong(sY);
-		Ponto ponto = null;
+		Ponto ponto = new Ponto();
 		
 		if(sId != null && !sId.trim().isEmpty()) {
 			int id = Integer.parseInt(sId);
-			ponto = new Ponto(id, descricao, x, y);
+			ponto.setId(id);
+			ponto.setDescricao(descricao);
+			ponto.setX(x);
+			ponto.setY(y);
 			PontoDAO.editarPonto(ponto);
 		}else {
 			ponto.setDescricao(descricao);

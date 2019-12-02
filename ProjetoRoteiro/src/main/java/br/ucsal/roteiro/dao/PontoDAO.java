@@ -66,17 +66,16 @@ public class PontoDAO {
 	
 	public static void inserirPonto(Ponto p) {
 		try {
-			String sql = "insert into pontos values(?,?,?,?)";
+			String sql = "insert into pontos (descricao, x, y) values(?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			Integer id = p.getId();
-			ps.setInt(1, id);
-			ps.setString(2, p.getDescricao());
-			ps.setFloat(3, p.getX());
-			ps.setFloat(4, p.getY());
-			ResultSet rs = ps.executeQuery();
+		
+			ps.setString(1, p.getDescricao());
+			ps.setFloat(2, p.getX());
+			ps.setFloat(3, p.getY());
+			ps.executeUpdate();
 			ps.close();
-			rs.close();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
