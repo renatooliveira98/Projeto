@@ -9,11 +9,19 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Pontos</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body class="body2">
-	
 
 
+	<%@include file="./includes/header.jsp"%>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -25,18 +33,19 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>
-								Descricao 
-								<c:if test="${p.roteiroPontos.size()==0 }">
-								<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Este Ponto não pertence a nenhum roteiro">
-  									Atenção
-								</button>
-								</c:if>
+								<th>Descricao <c:if test="${p.roteiroPontos.size()==0 }">
+										<button type="button" class="btn btn-secondary"
+											data-toggle="tooltip" data-placement="top"
+											title="Este Ponto não pertence a nenhum roteiro">
+											Atenção</button>
+									</c:if>
 								</th>
-								<th>Coordenada X<br>Latitude</th>
-								<th>Coordenada Y<br>Longitude</th>
-								<th><a href="./PontoForm">Novo ponto</a>  </th>
-								
+								<th>Coordenada X<br>Latitude
+								</th>
+								<th>Coordenada Y<br>Longitude
+								</th>
+								<th><a href="./PontoForm">Novo ponto</a></th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -47,13 +56,11 @@
 									<td>${p.x}</td>
 									<td>${p.y}</td>
 									<c:if test="${idRoteiro == null}">
-										<td>
-										<c:if test="${p.roteiroPontos.size()==0 }">
-										<a href='./PontoForm?id=${p.id}'>Editar</a> |
-									 	<a	href='./PontoExcluir?id=${p.id}'>Excluir</a>
-									 	</c:if>
-									 	</td>
-									 </c:if>
+										<td><c:if test="${p.roteiroPontos.size()==0 }">
+												<a href='./PontoForm?id=${p.id}'>Editar</a> |
+									 	<a href='./PontoExcluir?id=${p.id}'>Excluir</a>
+											</c:if></td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -65,5 +72,7 @@
 	</div>
 
 	<a href="./Painel">Painel</a>
+
+	<%@include file="./includes/footer.jsp"%>
 </body>
 </html>

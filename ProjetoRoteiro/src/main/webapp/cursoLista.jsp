@@ -12,15 +12,24 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Cursos</title>
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 </head>
 <body class="body2">
-
+	<%@include file="./includes/header.jsp"%>
 	<br />
 
-<a class="btn btnPadra" href="./CursoForm">Novo Curso</a>
-	
+	<a class="btn btnPadra" href="./CursoForm">Novo Curso</a>
+
 
 	<br />
 
@@ -30,7 +39,7 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-				
+
 					<table class="table">
 						<thead>
 							<tr>
@@ -38,10 +47,10 @@
 								<th scope="col">Nome</th>
 								<th scope="col">Instituicao</th>
 								<th scope="col">Duracao</th>
-								
-								
-									<th scope="col"></th> 
-								
+
+
+								<th scope="col"></th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -51,12 +60,13 @@
 									<td>${c.nome}</td>
 									<td>${c.instituicao.nome}</td>
 									<td>${c.duracao}</td>
-									
-									<td>
-  									<c:if test="${c.estudantes.size()>0}">
-									<a href='./CursoForm?id=${c.id}'><i class="material-icons">edit</i></a> 
-									<a href='./CursoExcluir?id=${c.id}'><i class="material-icons">delete</i></a>
-									</c:if></td>
+
+									<td><c:if test="${c.estudantes.size()>0}">
+											<a href='./CursoForm?id=${c.id}'><i
+												class="material-icons">edit</i></a>
+											<a href='./CursoExcluir?id=${c.id}'><i
+												class="material-icons">delete</i></a>
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -66,5 +76,7 @@
 		</div>
 	</div>
 	<a href="./Painel">Painel</a>
+
+	<%@include file="./includes/footer.jsp"%>
 </body>
 </html>

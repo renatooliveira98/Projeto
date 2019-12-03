@@ -10,10 +10,20 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body class="body2">
 
-	<a class="btn btn-default" href="./EstudanteForm">Cadastrar Estudante</a>
+	<%@include file="./includes/header.jsp"%>
+	<a class="btn btn-default" href="./EstudanteForm">Cadastrar
+		Estudante</a>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -34,8 +44,8 @@
 								<tr>
 									<td>${ e.nome}</td>
 									<td>${e.cpf}</td>
-									<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>|
-									<a href="./EstudanteForm?id=${e.id}">Editar</a></td>
+									<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>| <a
+										href="./EstudanteForm?id=${e.id}">Editar</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -45,5 +55,6 @@
 		</div>
 	</div>
 
+	<%@include file="./includes/footer.jsp"%>
 </body>
 </html>

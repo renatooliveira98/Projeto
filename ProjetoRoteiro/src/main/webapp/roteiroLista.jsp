@@ -9,8 +9,18 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de roteiros</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body class="body2">
+
+	<%@include file="./includes/header.jsp"%>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -18,7 +28,7 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-				<a href="./RoteiroForm">Novo Roteiro</a>
+					<a href="./RoteiroForm">Novo Roteiro</a>
 					<table class="table">
 						<tr>
 							<th>Id</th>
@@ -31,11 +41,14 @@
 						<c:forEach var="r" items="${roteiros}">
 							<tr>
 								<th>${r.id}</th>
-								<th><a href='./PontoRoteiroListar?idRoteiro=${r.id}'> ${r.codigo}</a></th> 
+								<th><a href='./PontoRoteiroListar?idRoteiro=${r.id}'>
+										${r.codigo}</a></th>
 								<th>${r.descricao}</th>
 								<th>${r.tipo}</th>
-								<!-- <th><a href='./RoteiroForm?id=${r.id}'>Editar</a> | 
-								<a	href='./RoteiroExcluir?id=${r.id}'>Excluir</a></th> -->
+								<!-- <c:if test="${r.pontos.size() > 0}">
+								<th><a href='./RoteiroForm?id=${r.id}'>Editar</a> | 
+								<a	href='./RoteiroExcluir?id=${r.id}'>Excluir</a></th>
+								</c:if>-->
 							</tr>
 						</c:forEach>
 					</table>
@@ -43,6 +56,9 @@
 			</div>
 		</div>
 	</div>
+
+
 	<a href="./Painel">Painel</a>
+	<%@include file="./includes/footer.jsp"%>
 </body>
 </html>
