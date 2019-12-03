@@ -35,6 +35,7 @@ public class PontoRoteiroListar extends HttpServlet {
 		int id = Integer.parseInt(sId);
 		
 		List<Ponto> pontos = PontoDAO.listarPontosPorRoteiro(id);
+		request.setAttribute("idRoteiro", sId);
 		request.setAttribute("pontos", pontos);
 		request.getRequestDispatcher("pontoRoteiroLista.jsp").forward(request, response);
 		

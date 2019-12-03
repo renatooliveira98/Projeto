@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Insert title here</title>
+<title>Lista de pontos</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -20,8 +20,7 @@
 </head>
 <body class="body2">
 
-
-	<%@include file="./includes/header.jsp"%>
+	<%@include file="./includes/footer.jsp"%>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -29,33 +28,30 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-
-					<a href="./OnibusForm">Novo Onibus</a>
+					<a href="./RoteiroForm">Novo Ponto</a>
 					<table class="table">
-						<thead>
+						<tr>
+							<th>Id</th>
+							<th>Descrição</th>
+							<th>X</th>
+							<th>Y</th>
+							<!-- <th><a href="./RoteiroForm">Novo Roteiro</a></th>  -->
+						</tr>
+
+						<c:forEach var="p" items="${pontos}">
 							<tr>
-								<th>Id</th>
-								<th>Placa</th>
-								<th>Detalhes</th>
-								<th>Situacao</th>
-								<!-- <th><a  href="./OnibusForm">Novo Onibus</a></th> -->
+								<th>${p.id}</th>
+								<th><a href='./PontoRoteiroListar?idRoteiro=${p.id}'>
+										${p.descricao}</a></th>
+								<th>${p.x}</th>
+								<th>${p.y}</th>
+								<c:if test="${idRoteiro != null}">
+									<th><a href='./RoteiroForm?id=${r.id}'>Editar</a> | <a
+										href='./RoteiroExcluir?id=${r.id}'>Excluir</a></th>
+								</c:if>
 							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="o" items="${onibus}">
-								<tr>
-									<td>${o.id}</td>
-									<td>${o.placa}</td>
-									<td>${o.detalhes}</td>
-									<td>${o.situacao}</td>
-									<!-- <td><a href='./OnibusForm?id=${o.id}'>Editar</a> | 
-									<a href='./OnibusExcluir?id=${o.id}'>Excluir</a></td> -->
-								</tr>
-							</c:forEach>
-						</tbody>
-
+						</c:forEach>
 					</table>
-
 				</div>
 			</div>
 		</div>

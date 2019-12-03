@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +12,23 @@
 <meta charset="ISO-8859-1">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Insert title here</title>
+<title>Bem vindo!</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body class="body2">
 
+	<%@include file="./includes/header.jsp"%>
+
 	<br />
-	<a class="btn btn-default" href="./AdministradorForm">Novo Administrador</a>
+	<a class="btn btn-default" href="./AdministradorForm">Novo
+		Administrador</a>
 	<br />
 
 	<div class="container body-content ">
@@ -43,8 +54,10 @@
 									<td>${a.nome}</td>
 									<td>${a.email}</td>
 									<td>${a.cpf}</td>
-									<td><a href='./AdministradorForm?id=${a.id}'><i class="material-icons">edit</i></a> 
-									<a href='./AdministradorExcluir?id=${a.id}'><i class="material-icons">delete</i></a></td>
+									<td><a href='./AdministradorForm?id=${a.id}'><i
+											class="material-icons">edit</i></a> <a
+										href='./AdministradorExcluir?id=${a.id}'><i
+											class="material-icons">delete</i></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

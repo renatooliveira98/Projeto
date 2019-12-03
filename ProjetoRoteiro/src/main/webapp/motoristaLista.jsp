@@ -9,11 +9,21 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Motoristas</title>
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body class="body2">
 
-	
 
+	<%@include file="./includes/header.jsp"%>
 
 	<div class="container body-content ">
 		<div class="row">
@@ -21,7 +31,8 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-				<a class="btn btn-default" href="./MotoristaForm">Novo Motorista</a>
+					<a class="btn btn-default" href="./MotoristaForm">Novo
+						Motorista</a>
 					<table class="table">
 						<thead>
 							<tr>
@@ -40,9 +51,9 @@
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
 									<c:if test="${usuario.papel.id == 2}">
-									  <td><a href='./MotoristaForm?id=${m.id}'>Editar</a> |
-									 <a	href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
-									 </c:if>
+										<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a
+											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -54,5 +65,7 @@
 	</div>
 
 	<a href="./Painel">Painel</a>
+
+	<%@include file="./includes/footer.jsp"%>
 </body>
 </html>

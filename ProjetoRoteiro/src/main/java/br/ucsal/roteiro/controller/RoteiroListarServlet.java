@@ -17,7 +17,7 @@ import br.ucsal.roteiro.model.Roteiro;
 /**
  * Servlet implementation class RoteiroListaServlet
  */
-@WebServlet("/RoteiroLista")
+@WebServlet("/RoteiroListar")
 public class RoteiroListarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +29,7 @@ public class RoteiroListarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Roteiro> roteiros = RoteiroDAO.listarRoteiros();
 		List<Ponto> pontos = PontoDAO.listarPontos();
+		
 		request.setAttribute("pontos", pontos);
 		request.setAttribute("roteiros", roteiros);
 		request.getRequestDispatcher("roteiroLista.jsp").forward(request, response);
