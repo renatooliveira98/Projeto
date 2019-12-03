@@ -44,7 +44,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idUserS= request.getParameter("id");
 
-		String[] salvar= request.getParameterValues("roteirosSelecionados");
+		String[] salvar= request.getParameterValues("salvar");
 
 		String nome = request.getParameter("nome");
 		String nomeSocial = request.getParameter("nomeSocial");
@@ -63,15 +63,15 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		
 		if(salvar!= null ) {
 			for (String idRoteiro : salvar) {
+				System.out.println("r: "+idRoteiro);
 				roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
 			}
 		}
 		Papel p=PapelDAO.buscarPapel(2);
 		Estudante estudante= null;
-
 		if( idUserS!= null && !idUserS.trim().isEmpty()) {
-			
 			estudante= EstudanteDAO.buscarEstudantePeloUsuario(Integer.parseInt(idUserS));
+			System.out.println("e: "+estudante.getId());
 			Endereco endereco = EnderecoDAO.buscarEndereco(estudante.getUsuario().getEndereco().getId());
 			endereco.setBairro(bairro);
 			endereco.setCep(cep);
@@ -80,7 +80,8 @@ public class EstudanteSalvarServlet extends HttpServlet {
 			endereco.setNumero(numero);
 
 			estudante.setCurso(CursoDAO.buscarCurso(Integer.parseInt(sIdCurso)));
-
+			estudante.setRoteiros(roteiros);
+			
 			Usuario usuario = UsuarioDAO.buscarUsuario(Integer.parseInt(idUserS));
 			usuario.setNome(nome);
 			usuario.setNomeSocial(nomeSocial);
