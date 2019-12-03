@@ -5,35 +5,35 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import java.sql.SQLException;
+import java.util.Properties;
 
 
 public class Conexao {
 
-	 private static Connection con;
-	
-	 static {
-	       String url = "jdbc:hsqldb:hsql://localhost/roteiros";
-	        String user = "SA";
-	        String password = "";
-	        
-	        try {
-				Class.forName("org.hsqldb.jdbcDriver");
-				con = DriverManager.getConnection(url, user, password);
-			} catch (ClassNotFoundException e1) {
-				System.out.println("erro");
-				e1.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				System.out.println("erro2");
-				e.printStackTrace();
-			}
-	 }
+	private static Connection con;
+	// public static void main(String[] args) throws SQLException {
+	static {
+		String url = "jdbc:postgresql://localhost/roteiros";
+		Properties props = new Properties();
+		props.setProperty("user","postgres");
+		props.setProperty("password","postegresql"); //coloque a senha aqui
+		props.setProperty("ssl","false");
 
-	    public static Connection getConnection(){
-	       
-	    	return con;
-	    }
-	 }
+		try {
+
+			con = DriverManager.getConnection(url, props);
+
+		}  catch (SQLException e) {
+			System.out.println("erro2");
+			e.printStackTrace();
+		}
+	}
+
+	public static Connection getConnection(){
+
+		return con;
+	}
+}
 
 
 

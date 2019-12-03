@@ -66,8 +66,8 @@ situacao varchar(45) not null
 create table pontos(
 id serial primary key,
 descricao varchar(45) not null,
-x long,
-y long
+x double precision,
+y double precision
 );
 
 create table roteiros(
