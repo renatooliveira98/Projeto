@@ -31,10 +31,16 @@ public class PontoListar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Ponto> pontos = PontoDAO.listarPontos();
+		List<Ponto> pontos = null;
 		String sId = request.getParameter("idRoteiro");
+		if(sId!=null) {
+			pontos = PontoDAO.listarPontosPorRoteiro(Integer.parseInt(sId));
+		}else {
+			pontos = PontoDAO.listarPontos();
+			
+		}
 		//int id = Integer.parseInt(sId);
-		request.setAttribute("idRoteiro", sId);
+		request.setAttribute("idRoteiro", sId);//setando o atributo pra poder ocultar o link novo ponto
 		request.setAttribute("pontos", pontos);
 		request.getRequestDispatcher("pontoLista.jsp").forward(request, response);
 	}

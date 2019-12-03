@@ -41,7 +41,7 @@
 						<c:forEach var="r" items="${roteiros}">
 							<tr>
 								<th>${r.id}</th>
-								<th><a href='./PontoRoteiroListar?idRoteiro=${r.id}'>
+								<th><a href='./PontoListar?idRoteiro=${r.id}'>
 										${r.codigo}</a></th>
 								<th>${r.descricao}</th>
 								<th>${r.tipo}</th>
