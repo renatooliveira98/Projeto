@@ -59,7 +59,7 @@
 
 						<div class="row">
 							<div class="col-lg-6 col-sm-12">
-								<label>Roteiros cadastrados</label>
+								<label>Pontos cadastrados</label>
 								<div class="form-group">
 									<div class=" ms-lista">
 										<ul class="list-group list-group-flush" id="cadastradas">
@@ -72,7 +72,7 @@
 								</div>
 							</div>
 							<div class="col-lg-6 col-sm-12">
-								<label>Roteiros do Estudante</label>
+								<label>Pontos do Roteiro</label>
 								<div class="ms-lista">
 									<ul id="salvar" class="list-group list-group-flush">
 										<c:forEach var="pc" items="${pontosCadastrados}">
