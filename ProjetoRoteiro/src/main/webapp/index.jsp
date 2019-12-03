@@ -13,7 +13,7 @@
 </head>
 <body class="body">
 
-<a href='./ProgramacaoLista'>listar Programacoes</a>
+<a href='./ProgramacaoLista'>Listar Programações</a>
 
 <div class="container">
 		<div class="row">
