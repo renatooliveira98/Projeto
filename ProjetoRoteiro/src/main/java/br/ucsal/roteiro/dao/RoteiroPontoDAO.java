@@ -62,4 +62,35 @@ public class RoteiroPontoDAO {
 		}
 		return rp;
 	}
+	
+	public static List<Ponto> buscarPontoDoRoteiro(Integer idRot) {
+		List<Ponto> pontos = new ArrayList<>();
+		String sql="select * from Roteiro_ponto where id_roteiro=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idRot);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Integer idPonto= rs.getInt("id_ponto");
+				pontos.add(PontoDAO.obterPonto(idPonto));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pontos;
+	}
+	
+	public static void excluirPontoDoRoteiro(Integer idRot) {
+		try {
+			String sql = "delete from roteiro_ponto where id_roteiro=?;";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, idRot);
+			ps.executeUpdate();
+			ps.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

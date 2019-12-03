@@ -152,6 +152,8 @@ public class RoteiroDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		RoteiroPontoDAO.excluirPontoDoRoteiro(r.getId());
+		RoteiroDAO.inserirRoteiro(r);
 	}
 
 }

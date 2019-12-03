@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.roteiro.dao.PontoDAO;
 import br.ucsal.roteiro.dao.RoteiroDAO;
+import br.ucsal.roteiro.dao.RoteiroPontoDAO;
 import br.ucsal.roteiro.model.Roteiro;
 
 @WebServlet("/RoteiroForm")
@@ -25,6 +26,8 @@ public class RoteiroFormServlet extends HttpServlet {
 		Roteiro roteiro = null;
 		if(id != null) {
 			roteiro = RoteiroDAO.obterRoteiro(Integer.parseInt(id));
+			request.setAttribute("pontosCadastrados",RoteiroPontoDAO.buscarPontoDoRoteiro(Integer.parseInt(id)));
+			
 		}
 		request.setAttribute("pontos", PontoDAO.listarPontos());
 		request.setAttribute("roteiro", roteiro);
