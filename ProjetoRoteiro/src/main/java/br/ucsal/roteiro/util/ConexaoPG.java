@@ -13,7 +13,7 @@ public class ConexaoPG {
 		 String url = "jdbc:postgresql://localhost/Roteiros";
 		 Properties props = new Properties();
 		 props.setProperty("user","postgres");
-		 props.setProperty("password","cyh/dsaV75v");
+		 props.setProperty("password",""); //coloque a senha aqui
 		 props.setProperty("ssl","false");
 	        
 	        try {
