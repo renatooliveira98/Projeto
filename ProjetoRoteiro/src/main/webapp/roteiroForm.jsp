@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="roteiro.js"></script>
+<script type="text/javascript" src="roteiro.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"
 	type="text/javascript"></script>
@@ -56,13 +57,12 @@
 							</div>
 						</div>
 
-
 						<div class="row">
 							<div class="col-lg-6 col-sm-12">
-								<label>Pontos Cadastrados</label>
+								<label>Roteiros cadastrados</label>
 								<div class="form-group">
 									<div class=" ms-lista">
-										<ul class="list-group list-group-flush" id="listaPontos">
+										<ul class="list-group list-group-flush" id="cadastradas">
 											<c:forEach var="p" items="${pontos}">
 												<li class="list-group-item" value="${p.id}">${p.descricao}</li>
 											</c:forEach>
@@ -72,12 +72,22 @@
 								</div>
 							</div>
 							<div class="col-lg-6 col-sm-12">
-								<label>Pontos do Roteiro</label>
+								<label>Roteiros do Estudante</label>
 								<div class="ms-lista">
-									<ul id="lstTag" class="list-group list-group-flush"></ul>
+									<ul id="salvar" class="list-group list-group-flush">
+										<c:forEach var="pc" items="${pontosCadastrados}">
+											<li class="list-group-item" value="${pc.id}">
+												${pc.descricao} <input type='checkbox' name='salvar'
+												id='salvar' class='chkTags' checked='checked'
+												value="${pc.id}">
+											</li>
+										</c:forEach>
+									</ul>
 								</div>
 							</div>
 						</div>
+						
+						
 						<button class="btn btnPadrao" type="submit">Enviar</button>
 					</form>
 				</div>

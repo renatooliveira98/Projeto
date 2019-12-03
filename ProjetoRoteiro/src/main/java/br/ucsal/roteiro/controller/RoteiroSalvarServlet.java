@@ -28,8 +28,8 @@ public class RoteiroSalvarServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Roteiro roteiro = new Roteiro();
-		String[] idsPonto = request.getParameterValues("pontosSelecionados");
+		Roteiro roteiro = null;
+		String[] idsPonto = request.getParameterValues("salvar");
 		String id = request.getParameter("id");
 		String codigo = request.getParameter("codigo");
 		String descricao = request.getParameter("descricao");
@@ -40,14 +40,17 @@ public class RoteiroSalvarServlet extends HttpServlet {
 		for (String idPonto : idsPonto) {
 			pontos.add(PontoDAO.obterPonto(Integer.parseInt(idPonto)));
 		}
-		roteiro.setPontos(pontos);
 		if(id != null && !id.trim().isEmpty()) {
+			roteiro= RoteiroDAO.obterRoteiro(Integer.parseInt(id));
+			roteiro.setPontos(pontos);
 			roteiro.setId(Integer.parseInt(id));
 			roteiro.setCodigo(codigo);
 			roteiro.setDescricao(descricao);
 			roteiro.setTipo(tipo);
 			RoteiroDAO.editarRoteiro(roteiro);
 		}else {
+			roteiro= new Roteiro();
+			roteiro.setPontos(pontos);
 			roteiro.setCodigo(codigo);
 			roteiro.setDescricao(descricao);
 			roteiro.setTipo(tipo);
