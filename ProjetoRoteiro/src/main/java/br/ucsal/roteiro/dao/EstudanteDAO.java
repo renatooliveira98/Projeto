@@ -164,5 +164,28 @@ public class EstudanteDAO {
 		}	
 		return estudante;		
 	}
+	
+	public static List<Estudante> buscarEstudantePeloCurso(Integer idC) {
+		List<Estudante> estudantes = new ArrayList<>();
+
+		try {
+			String sql = "select * from estudantes where id_curso=?;";		
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idC);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Integer id= rs.getInt("id");
+				Integer idCurso= rs.getInt("id_curso");
+				Integer idUsuario=rs.getInt("id_usuario");
+				Curso c= CursoDAO.buscarCurso(idCurso);
+				Usuario u = UsuarioDAO.buscarUsuario(idUsuario);		
+				Estudante estudante = new Estudante(id, u, null, c);
+				estudantes.add(estudante);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return estudantes;
+	}
 
 }

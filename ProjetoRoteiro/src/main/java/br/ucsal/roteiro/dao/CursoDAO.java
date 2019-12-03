@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import br.ucsal.roteiro.model.Curso;
+import br.ucsal.roteiro.model.Estudante;
 import br.ucsal.roteiro.model.Instituicao;
 import br.ucsal.roteiro.util.Conexao;
 
@@ -25,12 +26,13 @@ public class CursoDAO {
 				String nome = rs.getString(2);
 				int duracao = Integer.parseInt(rs.getString(3));
 				Instituicao instituicao = InstituicaoDAO.buscarInstituicao(Integer.parseInt(rs.getString(4)));
-				//Instituicao instituicao = new Instituicao(1, "UCSAL", null, null);
+				List<Estudante> estudantes = EstudanteDAO.buscarEstudantePeloCurso(id);
 				Curso curso = new Curso();
 				curso.setDuracao(duracao);
 				curso.setId(id);
 				curso.setNome(nome);
 				curso.setInstituicao(instituicao);
+				curso.setEstudantes(estudantes);
 				cursos.add(curso);
 
 			}

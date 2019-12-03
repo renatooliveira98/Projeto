@@ -2,9 +2,13 @@ package br.ucsal.roteiro.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.ucsal.roteiro.model.Ponto;
 import br.ucsal.roteiro.model.Roteiro;
+import br.ucsal.roteiro.model.RoteiroPonto;
 import br.ucsal.roteiro.util.Conexao;
 
 public class RoteiroPontoDAO {
@@ -36,5 +40,26 @@ public class RoteiroPontoDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static List<RoteiroPonto> buscarPeloPonto(Integer id) {
+		List<RoteiroPonto> rp = new ArrayList<>();
+		String sql="select * from Roteiro_ponto where id_ponto=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				RoteiroPonto r= new RoteiroPonto();
+				r.setId(rs.getInt("id"));
+				r.setIdPonto(rs.getInt("id_ponto"));
+				r.setIdRoteiro(rs.getInt("id_roteiro"));
+				rp.add(r);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rp;
 	}
 }

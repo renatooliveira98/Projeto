@@ -19,7 +19,7 @@
 
 	<br />
 
-
+<a class="btn btnPadra" href="./CursoForm">Novo Curso</a>
 	
 
 	<br />
@@ -30,7 +30,7 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-				<a  href="./CursoForm">Novo Curso</a>
+				
 					<table class="table">
 						<thead>
 							<tr>
@@ -38,7 +38,10 @@
 								<th scope="col">Nome</th>
 								<th scope="col">Instituicao</th>
 								<th scope="col">Duracao</th>
-								<!-- <th scope="col"><a  href="./CursoForm">Novo Curso</a></th> -->
+								
+								
+									<th scope="col"></th> 
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -48,10 +51,12 @@
 									<td>${c.nome}</td>
 									<td>${c.instituicao.nome}</td>
 									<td>${c.duracao}</td>
-  
-									<!--  <td><a href='./CursoForm?id=${c.id}'><i class="material-icons">edit</i></a> 
-									<a href='./CursoExcluir?id=${c.id}'><i class="material-icons">delete</i></a></td>-->
 									
+									<td>
+  									<c:if test="${c.estudantes.size()>0}">
+									<a href='./CursoForm?id=${c.id}'><i class="material-icons">edit</i></a> 
+									<a href='./CursoExcluir?id=${c.id}'><i class="material-icons">delete</i></a>
+									</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>

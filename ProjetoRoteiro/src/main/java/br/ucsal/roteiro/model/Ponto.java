@@ -1,11 +1,14 @@
 package br.ucsal.roteiro.model;
 
+import java.util.List;
+
 public class Ponto {
 
 	private Integer id;
 	private String descricao;
 	private float x;
 	private float y;
+	List<RoteiroPonto> roteiroPontos;
 	
 	public Ponto() {
 		super();
@@ -44,5 +47,14 @@ public class Ponto {
 		this.y = y;
 	}
 
+	public List<RoteiroPonto> getRoteiroPontos() {
+		return roteiroPontos;
+	}
+
+	public void setRoteiroPontos(List<RoteiroPonto> roteiroPontos) {
+		this.roteiroPontos = roteiroPontos;
+	}
+
+	
 	
 }

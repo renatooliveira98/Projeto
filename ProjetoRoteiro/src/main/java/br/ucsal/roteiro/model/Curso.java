@@ -1,11 +1,14 @@
 package br.ucsal.roteiro.model;
 
+import java.util.List;
+
 public class Curso {
 
 	private Integer id;
 	private Instituicao instituicao;
 	private String nome;
 	private Integer duracao; //em semestres
+	private List<Estudante> estudantes;
 	
 	public Curso() {
 		super();
@@ -43,5 +46,14 @@ public class Curso {
 	public void setDuracao(Integer duracao) {
 		this.duracao = duracao;
 	}
+
+	public List<Estudante> getEstudantes() {
+		return estudantes;
+	}
+
+	public void setEstudantes(List<Estudante> estudantes) {
+		this.estudantes = estudantes;
+	}
+	
 	
 }

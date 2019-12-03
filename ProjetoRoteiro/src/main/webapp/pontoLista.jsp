@@ -25,7 +25,14 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Descricao</th>
+								<th>
+								Descricao 
+								<c:if test="${p.roteiroPontos.size()==0 }">
+								<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Este Ponto não pertence a nenhum roteiro">
+  									Atenção
+								</button>
+								</c:if>
+								</th>
 								<th>Coordenada X<br>Latitude</th>
 								<th>Coordenada Y<br>Longitude</th>
 								<th><a href="./PontoForm">Novo ponto</a>  </th>
@@ -40,8 +47,12 @@
 									<td>${p.x}</td>
 									<td>${p.y}</td>
 									<c:if test="${idRoteiro == null}">
-										<td><a href='./PontoForm?id=${p.id}'>Editar</a> |
-									 	<a	href='./PontoExcluir?id=${p.id}'>Excluir</a></td>
+										<td>
+										<c:if test="${p.roteiroPontos.size()==0 }">
+										<a href='./PontoForm?id=${p.id}'>Editar</a> |
+									 	<a	href='./PontoExcluir?id=${p.id}'>Excluir</a>
+									 	</c:if>
+									 	</td>
 									 </c:if>
 								</tr>
 							</c:forEach>

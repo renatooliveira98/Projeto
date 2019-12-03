@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ucsal.roteiro.model.Ponto;
+import br.ucsal.roteiro.model.RoteiroPonto;
 import br.ucsal.roteiro.util.Conexao;
 
 public class PontoDAO {
@@ -27,8 +28,9 @@ public class PontoDAO {
 				String descricao = rs.getString("descricao");
 				Float x = Float.parseFloat(rs.getString("x"));
 				Float y = Float.parseFloat(rs.getString("y"));
-				
+				List<RoteiroPonto> roteiroPontos = RoteiroPontoDAO.buscarPeloPonto(id);
 				Ponto ponto = new Ponto(id, descricao, x, y);
+				ponto.setRoteiroPontos(roteiroPontos);
 				pontos.add(ponto);
 			}
 			ps.close();
@@ -83,7 +85,7 @@ public class PontoDAO {
 	
 	public static void excluirPonto(Integer idPonto) {
 
-		RoteiroPontoDAO.excluirPonto(idPonto);
+//		RoteiroPontoDAO.excluirPonto(idPonto);
 		try {
 			String sql = "delete from pontos where id=?;";
 			PreparedStatement ps = con.prepareStatement(sql);

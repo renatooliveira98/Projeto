@@ -33,8 +33,12 @@
 							<c:forEach var="i" items="${instituicoes}">
 								<tr>
 									<td>${i.nome}</td>
-									<td><a href="./InstituicaoExcluir?id=${i.id}">Excluir</a>|
-									<a href="./InstituicaoForm?id=${i.id}">Editar</a></td>
+									<td>
+									<c:if test="${i.cursos.size()>0}">
+									<a href="./InstituicaoExcluir?id=${i.id}">Excluir</a>|
+									<a href="./InstituicaoForm?id=${i.id}">Editar</a>
+									</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
