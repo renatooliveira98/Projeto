@@ -46,4 +46,16 @@ public class RoteiroEstudanteDAO {
 		}
 		return roteiros;
 	}
+	
+	public static void deletarPeloEstudante(Integer idEst) {
+		String sql="delete from roteiro_estudante where id_estudante=?";
+		try {
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, idEst);
+			pstmt.executeUpdate();
+			pstmt.close(); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

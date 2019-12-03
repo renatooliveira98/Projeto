@@ -127,6 +127,11 @@ public class EstudanteDAO {
 		} catch (Exception e) {
 			e.printStackTrace();	
 		}
+		
+		if(estudante.getRoteiros()!= null) {
+			RoteiroEstudanteDAO.deletarPeloEstudante(estudante.getId());
+			RoteiroEstudanteDAO.inserRoteiroEstudante(estudante);
+		}
 	
 	}
 

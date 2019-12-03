@@ -36,7 +36,7 @@
 				<div class="container centered" id="conteudo">
 					<form method="post" action="EstudanteSalvar">
 
-						<input type="hidden" name="id" value="${estudante.id}">
+						<input type="hidden" name="id" value="${estudante.usuario.id}">
 						<h1 class="tituloForm">Cadastrar Estudante</h1>
 						<hr>
 						<div class="row">
@@ -143,8 +143,8 @@
 									<ul id="salvar" class="list-group list-group-flush">
 										<c:forEach var="rc" items="${roteirosCadastrados}">
 											<li class="list-group-item" value="${rc.id}">
-												${rc.codigo} <input type='checkbox' name='chkTags'
-												id='chkTags' class='chkTags' checked='checked'
+												${rc.codigo} <input type='checkbox' name='salvar'
+												id='salvar' class='chkTags' checked='checked'
 												value="${rc.id}">
 											</li>
 										</c:forEach>
@@ -152,7 +152,7 @@
 								</div>
 							</div>
 						</div>
-
+						<c:out value="${roteirosCadastrados}"></c:out>
 						<button class="btn btnPadrao" type="submit">Enviar</button>
 
 					</form>

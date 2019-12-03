@@ -11,7 +11,7 @@ $(document).ready(function () {
 				}
 			});
 			if (!chkRptTag) {
-				$("#salvar").append("<li class='list-group-item' value='" + $(this).val() +"'>" + $(this, "option:selected").text() + "<input type='checkbox' name='chkTags' id='chkTags' class='chkTags' checked='checked' value='" + $(this, "option:selected").val() + "'></li>");
+				$("#salvar").append("<li class='list-group-item' value='" + $(this).val() +"'>" + $(this, "option:selected").text() + "<input type='checkbox' name='salvar' id='salvar' class='chkTags' checked='checked' value='" + $(this, "option:selected").val() + "'></li>");
 				$(this).remove();
 			}
 		});
