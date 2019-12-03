@@ -86,23 +86,7 @@
 							</select>
 						</div>
 						</div>
-<!-- 					<div class="row"> -->
 
-<!-- 							<div class="form-group col-lg-6"> -->
-<!-- 								<label for="nome">Nome do Curso </label> <input id="nome" -->
-<!-- 									class="form-control" type="text" name="nome" -->
-<%-- 									value="${curso.nome}"> --%>
-
-<!-- 							</div> -->
-
-
-<!-- 							<div class="form-group col-lg-6"> -->
-<!-- 								<label for="duracao">Duração</label> <input class="form-control" -->
-<!-- 									type="text" id="duracao" name="duracao" -->
-<%-- 									value="${curso.duracao}"> --%>
-
-<!-- 							</div> -->
-<!-- 						</div> -->
 
 						<button class="btn btnPadrao" type="submit">Salvar</button>
 					</form>
