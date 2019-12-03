@@ -1,11 +1,5 @@
 # ProjetoRoteiro
 
-Para executar:
-Run as... -> Maven Build...
-jetty:run
-
-jdbc:hsqldb:file:./banco/db
-org.hsqldb.jdbcDriver
 
 <h2>Descrição do projeto</h2>
   O sistema tem o objetivo de facilitar o acesso e garantir maior agilidade no processo de verificação dos roteiros do transporte universitário das cidades da região metropolitana de Salvador, bem como garantir maior segurança aos usuários. Através de um sistema onde será possível selecionar o roteiro e verificar os pontos de parada do mesmo, será possível ainda verificar os horários de partida e chegada estimada de cada roteiro, será possível também obter um controle das pessoas que estão utilizando o transporte e as que não estão.   <br>A verificação dos alunos no transporte que hoje é feita por meio da carteirinha do transporte, passaria a ser feita de forma digital, no celular, através de um leitor de QR code que seria deixado no transporte e ao ler esse QR code, iria mostrar se o aluno pertence aquele roteiro e se não, qual o seu roteiro de origem.
@@ -41,7 +35,6 @@ Os ônibus serão cadastrados e suas informações poderão ser editadas.
 
 <a href="https://drive.google.com/drive/folders/1jEi6fiIKuuxIkMrgeHrf7WMO5NQ8xK-u?usp=sharing">Telas</a>
 </br>
-n
 <h2>Diagrama de dominio:</h2><br>
 <img src="ProjetoRoteiro/src/main/resources/imagens/diagramaclasses.png">
 
