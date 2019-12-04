@@ -152,7 +152,7 @@
 								</div>
 							</div>
 						</div>
-						<c:out value="${roteirosCadastrados}"></c:out>
+						
 						<button class="btn btnPadrao" type="submit">Enviar</button>
 
 					</form>
