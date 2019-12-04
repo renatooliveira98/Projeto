@@ -6,9 +6,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Insert title here</title>
+<title>Instituições</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -43,8 +45,10 @@
 								<tr>
 									<td>${i.nome}</td>
 									<td><c:if test="${i.cursos.size()>0}">
-											<a href="./InstituicaoExcluir?id=${i.id}">Excluir</a>|
-									<a href="./InstituicaoForm?id=${i.id}">Editar</a>
+										<a href="./InstituicaoForm?id=${i.id}"><i
+													class="material-icons">edit</i></a>
+											<a href="./InstituicaoExcluir?id=${i.id}"><i
+												class="material-icons">delete</i></a>
 										</c:if></td>
 								</tr>
 							</c:forEach>

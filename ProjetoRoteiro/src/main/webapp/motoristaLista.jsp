@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Motoristas</title>
@@ -51,8 +53,10 @@
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
 									<c:if test="${usuario.papel.id == 2}">
-										<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a
-											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
+										<td><a href='./MotoristaForm?id=${m.id}'><i
+												class="material-icons">edit</i></a> | <a
+											href='./MotoristaExcluir?id=${m.id}'><i
+												class="material-icons">delete</i></a></td>
 									</c:if>
 								</tr>
 							</c:forEach>

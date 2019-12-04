@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Pontos</title>
@@ -52,8 +54,12 @@
 									<td>${p.horaVolta}</td>
 									<td>${p.onibus.placa}</td>
 									<td>${p.motorista.nome}</td>
-									<td><a href='./ProgramacaoExcluir?id=${p.id}'>Excluir</a>
-										| <a href='./ProgramacaoForm?id=${p.id}'>Editar</a></td>
+									<td>
+									<a href='./ProgramacaoForm?id=${p.id}'><i
+												class="material-icons">edit</i></a>
+									<a href='./ProgramacaoExcluir?id=${p.id}'><i
+												class="material-icons">delete</i></a>
+										</td>
 
 								</tr>
 							</c:forEach>

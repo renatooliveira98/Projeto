@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de Pontos</title>
@@ -57,8 +59,10 @@
 									<td>${p.y}</td>
 									<c:if test="${idRoteiro == null}">
 										<td><c:if test="${p.roteiroPontos.size()==0 }">
-												<a href='./PontoForm?id=${p.id}'>Editar</a> |
-									 	<a href='./PontoExcluir?id=${p.id}'>Excluir</a>
+												<a href='./PontoForm?id=${p.id}'><i
+												class="material-icons">edit</i></a>
+									 	<a href='./PontoExcluir?id=${p.id}'><i
+												class="material-icons">delete</i></a>
 											</c:if></td>
 									</c:if>
 								</tr>
