@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <title>Lista de roteiros</title>
@@ -45,10 +47,12 @@
 										${r.codigo}</a></th>
 								<th>${r.descricao}</th>
 								<th>${r.tipo}</th>
-								<!-- <c:if test="${r.pontos.size() > 0}">
-								<th><a href='./RoteiroForm?id=${r.id}'>Editar</a> | 
-								<a	href='./RoteiroExcluir?id=${r.id}'>Excluir</a></th>
-								</c:if>-->
+								<c:if test="${r.pontos.size() > 0}">
+								<th><a href='./RoteiroForm?id=${r.id}'><i
+												class="material-icons">edit</i></a> 
+								<a	href='./RoteiroExcluir?id=${r.id}'><i
+												class="material-icons">delete</i></a></th>
+								</c:if>
 							</tr>
 						</c:forEach>
 					</table>
