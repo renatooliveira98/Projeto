@@ -31,8 +31,9 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-
+<c:if test="${usuario.papel.id == 1}">
 					<a href="./OnibusForm">Novo Onibus</a>
+</c:if>
 					<table class="table">
 						<thead>
 							<tr>

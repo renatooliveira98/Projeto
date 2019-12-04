@@ -31,6 +31,9 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+					<c:if test="${usuario.papel.id == 1}">
+						<th><a href="./ProgramacaoForm">Nova Programação</a></th>
+					</c:if>
 					<table class="table">
 						<thead>
 							<tr>
@@ -41,7 +44,6 @@
 								<th>Hora Volta</th>
 								<th>Onibus</th>
 								<th>Motorista</th>
-								<th><a href="./ProgramacaoForm">Nova Programação</a></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -54,12 +56,10 @@
 									<td>${p.horaVolta}</td>
 									<td>${p.onibus.placa}</td>
 									<td>${p.motorista.nome}</td>
-									<td>
-									<a href='./ProgramacaoForm?id=${p.id}'><i
+									<td><c:if test="${usuario.papel.id == 1}">
+											<a href='./ProgramacaoForm?id=${p.id}'><i
 												class="material-icons">edit</i></a>
-									<a href='./ProgramacaoExcluir?id=${p.id}'><i
-												class="material-icons">delete</i></a>
-										</td>
+										</c:if></td>
 
 								</tr>
 							</c:forEach>

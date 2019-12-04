@@ -22,8 +22,7 @@
 </head>
 <body class="body2">
 	<%@include file="./includes/header.jsp"%>
-	<a class="btn btn-default" href="./instituicaoForm.jsp">Cadastrar
-		Instituição</a>
+	
 
 
 	<div class="container body-content ">
@@ -32,7 +31,10 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-
+					<c:if test="${usuario.papel.id == 1}">
+						<a class="btn btn-default" href="./instituicaoForm.jsp">Cadastrar
+							Instituição</a>
+					</c:if>
 					<table class="table">
 						<thead>
 							<tr>
@@ -44,11 +46,14 @@
 							<c:forEach var="i" items="${instituicoes}">
 								<tr>
 									<td>${i.nome}</td>
-									<td><c:if test="${i.cursos.size()>0}">
+									<td>
+									<c:if test="${usuario.papel.id == 1}">
+									<c:if test="${i.cursos.size()>0}">
 										<a href="./InstituicaoForm?id=${i.id}"><i
 													class="material-icons">edit</i></a>
 											<a href="./InstituicaoExcluir?id=${i.id}"><i
 												class="material-icons">delete</i></a>
+										</c:if>
 										</c:if></td>
 								</tr>
 							</c:forEach>

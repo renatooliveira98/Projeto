@@ -27,8 +27,6 @@
 	<%@include file="./includes/header.jsp"%>
 
 	<br />
-	<a class="btn btn-default" href="./AdministradorForm">Novo
-		Administrador</a>
 	<br />
 
 	<div class="container body-content ">
@@ -37,6 +35,10 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+					<c:if test="${usuario.papel.id == 1}">
+						<a class="btn btn-default" href="./AdministradorForm">Novo
+							Administrador</a>
+					</c:if>
 					<table class="table">
 						<thead>
 							<tr>
@@ -54,10 +56,14 @@
 									<td>${a.nome}</td>
 									<td>${a.email}</td>
 									<td>${a.cpf}</td>
-									<td><a href='./AdministradorForm?id=${a.id}'><i
+									<td>
+									<c:if test="${usuario.papel.id == 1}">
+									<a href='./AdministradorForm?id=${a.id}'><i
 											class="material-icons">edit</i></a> <a
 										href='./AdministradorExcluir?id=${a.id}'><i
-											class="material-icons">delete</i></a></td>
+											class="material-icons">delete</i></a>
+											</c:if>
+											</td>
 								</tr>
 							</c:forEach>
 						</tbody>

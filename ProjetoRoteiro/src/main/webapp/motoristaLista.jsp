@@ -33,15 +33,17 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-					<a class="btn btn-default" href="./MotoristaForm">Novo
-						Motorista</a>
+					<c:if test="${usuario.papel.id == 1}">
+						<a class="btn btn-default" href="./MotoristaForm">Novo
+							Motorista</a>
+					</c:if>
 					<table class="table">
 						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Nome</th>
 								<th>Descricao</th>
-								<th>Situacao </th>
+								<th>Situacao</th>
 								<!-- <th></th> -->
 							</tr>
 						</thead>
@@ -53,21 +55,19 @@
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
 
-									<td>
-									<c:if test="${usuario.papel.id == 1}"> 
-									<a href='./MotoristaForm?id=${m.id}'><i
-												class="material-icons">edit</i></a> 
-									<c:if test="${m.situacao != 'Demitido' }">
-									<a href='./MotoristaForm?situacao=demitir&id=${m.id}'> <i
-												class="material-icons">delete</i>
-									</a>
-									</c:if>
-									</c:if>
-									</td>
-<%-- 							Pode apagar esse comentario???			<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a --%>
-<%-- 											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td> --%>
-<%-- 									<c:if test="${usuario.papel.id == 2}"> --%>
-<%-- 									</c:if> --%>
+									<td><c:if test="${usuario.papel.id == 1}">
+											<a href='./MotoristaForm?id=${m.id}'><i
+												class="material-icons">edit</i></a>
+											<c:if test="${m.situacao != 'Demitido' }">
+												<a href='./MotoristaForm?situacao=demitir&id=${m.id}'> <i
+													class="material-icons">delete</i>
+												</a>
+											</c:if>
+										</c:if></td>
+									<%-- 							Pode apagar esse comentario???			<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a --%>
+									<%-- 											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td> --%>
+									<%-- 									<c:if test="${usuario.papel.id == 2}"> --%>
+									<%-- 									</c:if> --%>
 								</tr>
 							</c:forEach>
 						</tbody>

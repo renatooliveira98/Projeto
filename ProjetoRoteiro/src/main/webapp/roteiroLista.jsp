@@ -30,7 +30,9 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+				<c:if test="${usuario.papel.id == 1}">
 					<a href="./RoteiroForm">Novo Roteiro</a>
+				</c:if>
 					<table class="table">
 						<tr>
 							<th>Id</th>
@@ -47,11 +49,12 @@
 										${r.codigo}</a></th>
 								<th>${r.descricao}</th>
 								<th>${r.tipo}</th>
+								<c:if test="${usuario.papel.id == 1}">
 								<c:if test="${r.pontos.size() > 0}">
 								<th><a href='./RoteiroForm?id=${r.id}'><i
 												class="material-icons">edit</i></a> 
-								<a	href='./RoteiroExcluir?id=${r.id}'><i
-												class="material-icons">delete</i></a></th>
+								</th>
+								</c:if>
 								</c:if>
 							</tr>
 						</c:forEach>

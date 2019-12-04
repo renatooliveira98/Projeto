@@ -16,6 +16,6 @@ public class PerfilEstudanteServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("perfilEstudante.jsp").forward(request, response);;
+		request.getRequestDispatcher("dashboardEstudante.jsp").forward(request, response);;
 	}
 }

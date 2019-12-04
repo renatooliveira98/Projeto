@@ -31,6 +31,9 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
+				<c:if test="${usuario.papel.id == 1}">
+				<a href="./PontoForm">Novo ponto</a>
+			</c:if>
 					<table class="table">
 						<thead>
 							<tr>
@@ -46,7 +49,7 @@
 								</th>
 								<th>Coordenada Y<br>Longitude
 								</th>
-								<th><a href="./PontoForm">Novo ponto</a></th>
+								<th></th>
 
 							</tr>
 						</thead>
@@ -57,13 +60,16 @@
 									<td>${p.descricao}</td>
 									<td>${p.x}</td>
 									<td>${p.y}</td>
+									<c:if test="${usuario.papel.id == 1}">
 									<c:if test="${idRoteiro == null}">
 										<td><c:if test="${p.roteiroPontos.size()==0 }">
 												<a href='./PontoForm?id=${p.id}'><i
 												class="material-icons">edit</i></a>
 									 	<a href='./PontoExcluir?id=${p.id}'><i
 												class="material-icons">delete</i></a>
-											</c:if></td>
+											</c:if>
+											</c:if>
+											</td>
 									</c:if>
 								</tr>
 							</c:forEach>

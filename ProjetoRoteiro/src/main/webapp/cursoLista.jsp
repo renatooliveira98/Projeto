@@ -28,9 +28,6 @@
 	<%@include file="./includes/header.jsp"%>
 	<br />
 
-	<a class="btn btnPadra" href="./CursoForm">Novo Curso</a>
-
-
 	<br />
 
 	<div class="container body-content ">
@@ -39,7 +36,9 @@
 
 			<div class="col-lg-10">
 				<div class="container centered" id="conteudo">
-
+					<c:if test="${usuario.papel.id == 1}">
+						<a class="btn btnPadra" href="./CursoForm">Novo Curso</a>
+					</c:if>
 					<table class="table">
 						<thead>
 							<tr>
@@ -61,12 +60,15 @@
 									<td>${c.instituicao.nome}</td>
 									<td>${c.duracao}</td>
 
-									<td><c:if test="${c.estudantes.size()>0}">
-											<a href='./CursoForm?id=${c.id}'><i
-												class="material-icons">edit</i></a>
-											<a href='./CursoExcluir?id=${c.id}'><i
-												class="material-icons">delete</i></a>
+									<td><c:if test="${usuario.papel.id == 1}">
+											<c:if test="${c.estudantes.size()>0}">
+												<a href='./CursoForm?id=${c.id}'><i
+													class="material-icons">edit</i></a>
+												<a href='./CursoExcluir?id=${c.id}'><i
+													class="material-icons">delete</i></a>
+											</c:if>
 										</c:if></td>
+
 								</tr>
 							</c:forEach>
 						</tbody>
