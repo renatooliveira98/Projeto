@@ -78,8 +78,8 @@ public class MotoristaDAO {
 	
 	public static void editarMotorista(Motorista motorista) {
 		try {
-			String sql = "UPDATE motoristas " + "set nome=?, descricao = ?, situacao = ? " + "where motorista_id = ?;";
-
+			String sql = "UPDATE motoristas " + "set nome=?, descricao = ?, situacao = ? " + "where id = ?;";
+			System.out.println(motorista.getId());
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, motorista.getNome());
 			pstmt.setString(2, motorista.getDescricao());

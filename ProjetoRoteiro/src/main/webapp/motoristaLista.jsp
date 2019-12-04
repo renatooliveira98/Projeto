@@ -39,7 +39,7 @@
 								<th>Id</th>
 								<th>Nome</th>
 								<th>Descricao</th>
-								<th>Situacao</th>
+								<th>Situacao </th>
 								<!-- <th></th> -->
 							</tr>
 						</thead>
@@ -50,10 +50,19 @@
 									<td>${m.nome}</td>
 									<td>${m.descricao}</td>
 									<td>${m.situacao}</td>
-									<c:if test="${usuario.papel.id == 2}">
-										<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a
-											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td>
+									<td>
+									<c:if test="${usuario.papel.id == 1}"> 
+									<a href='./MotoristaForm?id=${m.id}'>Editar</a> 
+									<c:if test="${m.situacao != 'Demitido' }">
+									ou<a href='./MotoristaForm?situacao=demitir&id=${m.id}'> Demitir
+									</a>
 									</c:if>
+									</c:if>
+									</td>
+<%-- 							Pode apagar esse comentario???			<td><a href='./MotoristaForm?id=${m.id}'>Editar</a> | <a --%>
+<%-- 											href='./MotoristaExcluir?id=${m.id}'>Excluir</a></td> --%>
+<%-- 									<c:if test="${usuario.papel.id == 2}"> --%>
+<%-- 									</c:if> --%>
 								</tr>
 							</c:forEach>
 						</tbody>

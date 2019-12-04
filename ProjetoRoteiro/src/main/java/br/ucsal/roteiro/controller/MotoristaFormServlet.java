@@ -32,9 +32,14 @@ public class MotoristaFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		Motorista motorista = null;
-		
+		String situacao = request.getParameter("situacao");
 		if(id!=null) {
 			motorista = MotoristaDAO.buscarMotorista(Integer.parseInt(id));
+		}
+		if(situacao != null && situacao.equals("demitir")) {
+			motorista.setSituacao("Demitido");
+			MotoristaDAO.editarMotorista(motorista);
+			response.sendRedirect("./MotoristaListar");
 		}
 		request.setAttribute("motorista", motorista);
 		request.getRequestDispatcher("motoristaForm.jsp").forward(request, response);
