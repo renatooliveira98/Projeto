@@ -32,7 +32,6 @@ public class OnibusListarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Onibus> onibus = OnibusDAO.listarOnibus();	
-		System.out.println(onibus.get(5).getPlaca());
 		request.setAttribute("onibus", onibus);
 		request.getRequestDispatcher("onibusLista.jsp").forward(request, response);
 	}
