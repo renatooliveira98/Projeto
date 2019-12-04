@@ -40,9 +40,10 @@ public class MotoristaFormServlet extends HttpServlet {
 			motorista.setSituacao("Demitido");
 			MotoristaDAO.editarMotorista(motorista);
 			response.sendRedirect("./MotoristaListar");
-		}
+		}else {
 		request.setAttribute("motorista", motorista);
 		request.getRequestDispatcher("motoristaForm.jsp").forward(request, response);
+		}
 	}
 
 

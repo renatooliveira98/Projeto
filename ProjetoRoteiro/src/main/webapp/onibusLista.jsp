@@ -50,10 +50,17 @@
 									<td>${o.placa}</td>
 									<td>${o.detalhes}</td>
 									<td>${o.situacao}</td>
-									<td><a href='./OnibusForm?id=${o.id}'><i
+									<td>
+									<c:if test="${usuario.papel.id == 1}"> 
+									
+									<a href='./OnibusForm?id=${o.id}'><i
 												class="material-icons">edit</i></a> 
-									<a href='./OnibusExcluir?id=${o.id}'><i
-												class="material-icons">delete</i></a></td>
+									<c:if test="${o.situacao != 'Desabilitado' }">
+									<a href='./OnibusForm?situacao=desabilitado&id=${o.id}'><i
+												class="material-icons">delete</i></a>
+									</c:if>			
+									</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
