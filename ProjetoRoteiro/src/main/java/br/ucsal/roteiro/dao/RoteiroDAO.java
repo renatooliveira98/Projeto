@@ -139,13 +139,14 @@ public class RoteiroDAO {
 	
 	public static void editarRoteiro(Roteiro r) {
 		try {
-			String sql = "update roteiros set id=?, codigo=?, descricao=?, tipo=?";
+			String sql = "update roteiros set id=?, codigo=?, descricao=?, tipo=? where id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, r.getId());
 			ps.setString(2, r.getCodigo());
 			ps.setString(3, r.getDescricao());
 			ps.setString(4, r.getTipo());
+			ps.setInt(5, r.getId());
 			ps.executeUpdate();
 			
 			ps.close();
@@ -153,7 +154,7 @@ public class RoteiroDAO {
 			e.printStackTrace();
 		}
 		RoteiroPontoDAO.excluirPontoDoRoteiro(r.getId());
-		RoteiroDAO.inserirRoteiro(r);
+		RoteiroPontoDAO.inserirRoteiroPonto(r);;
 	}
 
 }

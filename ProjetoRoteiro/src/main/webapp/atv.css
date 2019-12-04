@@ -1,5 +1,12 @@
-
-
+.logout{
+    position: fixed;
+	top: 0px;
+	left: 95%;
+	weidth: 5px;
+}
+.cor{
+	text-color: white;
+}
 .body{
 	background-color: #02153D; 	
 }
@@ -8,7 +15,9 @@
 }
 
 .barraNavegacao{
-	background-color: #02153D; 
+	background-color: #02153D;
+	width: 100%px;
+	height: 25px;
 }
 
 .barraNavegacao2{
@@ -133,6 +142,3 @@
 #lstTag li {
 	cursor: pointer;
 }
-
-
-

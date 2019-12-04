@@ -62,8 +62,7 @@ public class EstudanteSalvarServlet extends HttpServlet {
 		List<Roteiro> roteiros= new ArrayList<>();
 		
 		if(salvar!= null ) {
-			for (String idRoteiro : salvar) {
-				System.out.println("r: "+idRoteiro);
+			for (String idRoteiro : salvar) {			
 				roteiros.add(RoteiroDAO.obterRoteiro(Integer.parseInt(idRoteiro)));
 			}
 		}

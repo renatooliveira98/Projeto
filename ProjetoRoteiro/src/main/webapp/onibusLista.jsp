@@ -6,9 +6,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="atv.css">
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
-<title>Insert title here</title>
+<title>Lista de Ônibus</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -48,8 +50,10 @@
 									<td>${o.placa}</td>
 									<td>${o.detalhes}</td>
 									<td>${o.situacao}</td>
-									<!-- <td><a href='./OnibusForm?id=${o.id}'>Editar</a> | 
-									<a href='./OnibusExcluir?id=${o.id}'>Excluir</a></td> -->
+									<td><a href='./OnibusForm?id=${o.id}'><i
+												class="material-icons">edit</i></a> 
+									<a href='./OnibusExcluir?id=${o.id}'><i
+												class="material-icons">delete</i></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

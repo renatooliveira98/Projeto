@@ -8,8 +8,10 @@
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
-<title>Insert title here</title>
+<title>Estudantes</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -44,8 +46,12 @@
 								<tr>
 									<td>${ e.nome}</td>
 									<td>${e.cpf}</td>
-									<td><a href="./EstudanteExcluir?id=${e.id}">Excluir</a>| <a
-										href="./EstudanteForm?id=${e.id}">Editar</a></td>
+									<td>
+									<a href="./EstudanteForm?id=${e.id}"><i
+												class="material-icons">edit</i></a>
+									<a href="./EstudanteExcluir?id=${e.id}"><i
+												class="material-icons">delete</i></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

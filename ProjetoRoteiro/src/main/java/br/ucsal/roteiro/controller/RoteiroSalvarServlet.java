@@ -37,9 +37,6 @@ public class RoteiroSalvarServlet extends HttpServlet {
 	
 		
 		List<Ponto> pontos = new ArrayList<Ponto>();
-		for (String idPonto : idsPonto) {
-			pontos.add(PontoDAO.obterPonto(Integer.parseInt(idPonto)));
-		}
 		if(id != null && !id.trim().isEmpty()) {
 			roteiro= RoteiroDAO.obterRoteiro(Integer.parseInt(id));
 			roteiro.setPontos(pontos);
