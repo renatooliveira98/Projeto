@@ -59,7 +59,7 @@
 												class="material-icons">edit</i></a> 
 									<c:if test="${m.situacao != 'Demitido' }">
 									<a href='./MotoristaForm?situacao=demitir&id=${m.id}'> <i
-												class="material-icons">
+												class="material-icons">delete</i>
 									</a>
 									</c:if>
 									</c:if>
